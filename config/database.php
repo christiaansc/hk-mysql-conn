@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Str;
 
+mysql://b7b10f55616ba2:f5aedc02@us-cdbr-east-03.cleardb.com/heroku_35fbf1a52b3a03f?reconnect=true
+
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$host = $url["us-cdbr-east-03.cleardb.com"] ?? null;
+$username = $url["b7b10f55616ba2"] ?? null;
+$password = $url["f5aedc02"] ?? null;
+$database = substr($url["heroku_35fbf1a52b3a03f"], 1);
+
 return [
 
     /*
@@ -15,7 +23,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql_hk'),
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +69,21 @@ return [
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
+        ],
+
+        'mysql_hk' => [
+            'driver' => 'mysql',
+            'host' => $host,
+            'port' => env('DB_PORT', '3306'),
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
 
         'pgsql' => [
