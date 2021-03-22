@@ -3,12 +3,6 @@
 use Illuminate\Support\Str;
 
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$host = $url["us-cdbr-east-03.cleardb.com"] ?? null;
-$username = $url["b7b10f55616ba2"] ?? null;
-$password = $url["f5aedc02"] ?? null;
-$database = substr($url["heroku_35fbf1a52b3a03f"], 1);
-
 return [
 
     /*
@@ -22,7 +16,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql_hk'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
