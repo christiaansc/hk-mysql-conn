@@ -1,17 +1,37 @@
 @extends('layouts.dashboard')
 @section('title','Gestión de productos')
 
+@section('breadcrumb')
+<section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Administracion de productos</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>      
+              <li class="breadcrumb-item active">Productos</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+@endsection
 @section('content')
 
 <div class="container">
 
+
 <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
-            </div>
+			<div class="card-header">
+				<a href="{{route('products.create')}}">
+					<span class="btn btn-success">+ Crear nuevo producto</span>
+				</a>
+			</div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">
                 <thead>
                 <tr>
                   <th>Id</th>
@@ -46,10 +66,10 @@
                                     
 
                                     
-                                    <td style="width: 50px;">
+                                    <td >
                                         {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
 
-                                        <a class="btn btn-block btn-default btn-sm" href="{{route('products.edit', $product)}}" title="Editar">
+                                        <a class="btn btn-block btn-info btn-sm" href="{{route('products.edit', $product)}}" title="Editar">
                                            
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -101,7 +121,7 @@
       "searching": true,
       "ordering": true,
       "info": true,
-      "autoWidth": false,
+      "autoWidth": true,
     });
   });
 </script>
