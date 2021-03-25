@@ -21,4 +21,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::resource('products', 'ProductController')->names('products');
+
+
+
+Route::get('change_status/ventas/{venta}', 'VentaController@change_status')->name('change.status.ventas');
+Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');

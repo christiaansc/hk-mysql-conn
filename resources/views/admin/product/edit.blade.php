@@ -27,8 +27,9 @@
     <div class="card ">
         <div class="card-body">
 	
-                    {!! Form::open(['route'=>'products.store', 'method'=>'POST','files' => true]) !!}
+                  
                    
+                    {!! Form::model($product,['route'=>['products.update',$product], 'method'=>'PUT','files' => true]) !!}
 
                     <div class="form-group">
                       <label for="nombre">Nombre</label>
@@ -72,10 +73,10 @@
                         </select>
                     </div>
 					
-					<div class="form-group">
-						<label for="picture">Imagen del producto</label>
-						<input type="file"  name="picture" id="picture" class="dropify form-control" />
-					</div>
+                <div class="form-group">
+                  <label for="picture">Imagen del producto</label>
+                  <input type="file"  name="picture" id="picture" class="dropify form-control" />
+                </div>
 				
                      <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                      <a href="{{route('products.index')}}" class="btn btn-info">

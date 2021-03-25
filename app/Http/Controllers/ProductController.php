@@ -34,7 +34,6 @@ class ProductController extends Controller
         return view('admin.product.create', compact('categorias', 'proveedores'));
         return view('admin.product.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,7 +59,6 @@ class ProductController extends Controller
         return redirect()->route('products.index');
 
     }
-
     /**
      * Display the specified resource.
      *
@@ -72,7 +70,6 @@ class ProductController extends Controller
         return view('admin.product.show', compact('product'));    
         
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +84,6 @@ class ProductController extends Controller
         $proveedores = ['id'=> 1 , 'nombre'=>'waffles'];
         return view('admin.product.edit', compact('product', 'categorias', 'proveedores'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -114,7 +110,6 @@ class ProductController extends Controller
         }
         return redirect()->route('products.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -130,4 +125,43 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+    public function change_status( Product $product)
+    {
+        
+        
+        if ($product->stado == 'ACTIVO') {
+            $product = Product::find($product->id)->update(['stado'=>'DESACTIVADO']);
+            return redirect()->back();
+        } else {
+            $product->update(['stado'=>'ACTIVO']);
+            return redirect()->back();
+        } 
+    }
+
+    public function get_products_by_barcode(Request $request){
+        if ($request->ajax()) {
+            $products = Waffle::where('codigo', $request->code)->firstOrFail();
+            return response()->json($products);
+        }
+    }
+    public function get_products_by_id(Request $request){
+        if ($request->ajax()) {
+            $products = Waffle::findOrFail($request->product_id);
+            return response()->json($products);
+        }
+    }
+
+    public function print_barcode()
+    {
+        $waffles = Waffle::get();
+        $pdf = PDF::loadView('admin.product.barcode', compact('waffles'));
+        return $pdf->download('codigos_de_barras.pdf');
+    }
+
+
+
+    
 }
+
+
+

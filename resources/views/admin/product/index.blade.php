@@ -52,29 +52,27 @@
                                   
                                     @if ($product->stado == 'ACTIVO')
                                     <td>
-                                        <a class="button btn btn-success" href="" title="Editar">
+                                        <a class="button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="button btn btn-danger" href="" title="Editar">
+                                        <a class="button btn btn-danger" href="{{route('change.status.products', $product)}}" title="Editar">
                                             Desactivado <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
-                                    
-
-                                    
+                                                                       
                                     <td >
                                         {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
 
-                                        <a class="btn btn-block btn-info btn-sm" href="{{route('products.edit', $product)}}" title="Editar">
+                                        <a class="btn  btn-info btn-sm" href="{{route('products.edit', $product)}}" title="Editar">
                                            
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         
-                                        <button class="btn btn-block btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
+                                        <button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
                                            
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
@@ -91,7 +89,6 @@
                   <th>categoria</th>
                   <th>Estado</th>
                   <th>Acciones</th>
-
                 </tr>
                 </tfoot>
               </table>
