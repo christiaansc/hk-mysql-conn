@@ -32,7 +32,7 @@ class ProductController extends Controller
         $categorias = ['id'=> 3,'nombre' =>'waffles Bike'];
         $proveedores = ['id'=> 1 , 'nombre'=>'waffles'];
         return view('admin.product.create', compact('categorias', 'proveedores'));
-        return view('admin.product.create');
+      
     }
     /**
      * Store a newly created resource in storage.
@@ -140,21 +140,21 @@ class ProductController extends Controller
 
     public function get_products_by_barcode(Request $request){
         if ($request->ajax()) {
-            $products = Waffle::where('codigo', $request->code)->firstOrFail();
+            $products = Product::where('codigo', $request->code)->firstOrFail();
             return response()->json($products);
         }
     }
     public function get_products_by_id(Request $request){
         if ($request->ajax()) {
-            $products = Waffle::findOrFail($request->product_id);
+            $products = Product::findOrFail($request->product_id);
             return response()->json($products);
         }
     }
 
     public function print_barcode()
     {
-        $waffles = Waffle::get();
-        $pdf = PDF::loadView('admin.product.barcode', compact('waffles'));
+        $products = Product::get();
+        $pdf = PDF::loadView('admin.product.barcode', compact('products'));
         return $pdf->download('codigos_de_barras.pdf');
     }
 

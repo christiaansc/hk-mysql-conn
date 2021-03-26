@@ -21,9 +21,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Rutas ventas
+Route::get('ventas/pdf/{venta}', 'VentaController@pdf')->name('ventas.pdf');
+
+Route::get('ventas/print/{venta}', 'VentaController@print')->name('ventas.print');  
 
 
+Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
+
+Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
+Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
 
 
 
