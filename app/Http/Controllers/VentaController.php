@@ -4,15 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Venta;
 use App\Product;
+use App\Cliente;
+
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 
 class VentaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -69,7 +78,14 @@ class VentaController extends Controller
      */
     public function show(Venta $venta)
     {
-        //
+        
+        $subtotal = 0 ;
+        $VentaDetalles = $venta->VentaDetalle;
+        foreach ($VentaDetalles as $ventaDetalle) {
+            $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
+        }
+        return view('admin.ventas.show', compact('venta', 'VentaDetalles', 'subtotal'));
+        
     }
 
     /**
@@ -112,8 +128,8 @@ class VentaController extends Controller
         foreach ($ventaDetalles as $ventaDetalle) {
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->discount/100;
         }
-        $pdf = PDF::loadView('admin.venta.pdf', compact('venta', 'subtotal', 'ventaDetalles'));
-        return $pdf->download('Reporte_de_venta_'.$venta->id.'.pdf');
+        $pdf = PDF::loadView('admin.ventas.pdf', compact('venta', 'subtotal', 'ventaDetalles'));
+        return $pdf->download('Reporte_de_venta'.$venta->id.'.pdf');
     }
 
     public function print(Venta $sale){

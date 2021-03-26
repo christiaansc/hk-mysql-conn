@@ -29,6 +29,8 @@ Route::get('ventas/print/{venta}', 'VentaController@print')->name('ventas.print'
 
 Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
+Route::resource('clientes', 'ClienteController')->names('clientes');
+
 
 Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
 Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
