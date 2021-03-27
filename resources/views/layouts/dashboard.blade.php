@@ -75,7 +75,7 @@
     @include('layouts._nav')
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper pt-4 pb-4">
     <!-- Content Header (Page header) -->
 
     @yield('breadcrumb')

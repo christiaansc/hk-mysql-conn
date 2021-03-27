@@ -39,9 +39,34 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
-                <span class="right badge badge-danger">New</span>
+                <span class="right badge badge-success">HOME</span>
               </p>
             </a>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Administracion
+                <i class="fas fa-angle-left right"></i>
+                
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('ventas.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ventas</p>
+                </a>
+              </li>
+
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -68,31 +93,7 @@
             </ul>
           </li>
 
-          <li class="nav-item menu-close">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Administracion
-                <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('ventas.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ventas</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
+        
      
      
       </nav>

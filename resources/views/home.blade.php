@@ -3,62 +3,53 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="page-header">
-        <h3 class="page-title">
-            Panel administrador
-        </h3>
-    </div>
-
-   
-    <div class="row">
-        <div class="col-lg-3 col-6">
+<div class="row">
+    <div class="col-lg-3">
             <!-- small card -->
-            @foreach($totalm as $mes)
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h2>{{number_format($mes->totalmes)}}</h2>
-                <p>Ventas totales Mes (ACTUAL)</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-              <a href="{{route('ventas.index')}}" class="small-box-footer">
+        @foreach($totalm as $mes)
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h2>${{number_format($mes->totalmes)}}</h2>
+                    <p>Ventas totales</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
                 Mas info <i class="fas fa-arrow-circle-right"></i>
-              </a>
+                </a>
             </div>
-          </div>
-          @endforeach
-        <div class="col-lg-3 col-6">
-
-          <div class="small-box bg-danger">
-              <div class="inner">
-                <h2>${{number_format($totaldia)}}</h2>
-                <p>Ventas total dia</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-shopping-cart"></i>
-              </div>
-              <a href="{{route('ventas.index')}}" class="small-box-footer">
+        </div>
+        @endforeach
+        <div class="col-lg-3">
+            <!-- small card -->
+        @foreach($totalmesactual as $tmactual)
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h2>${{number_format($tmactual->totalmesactual)}}</h2>
+                    <p>Venta total mes actual</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
                 Mas info <i class="fas fa-arrow-circle-right"></i>
-              </a>
+                </a>
             </div>
-          </div>
-    </div>
-
-    
-
-    
-    
-
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">
-                    <i class="fas fa-gift"></i>
-                    Ventas diarias
-                </h4>
-                <canvas id="ventas_diarias" height="100"></canvas>
-                <div id="orders-chart-legend" class="orders-chart-legend"></div>
+        </div>
+        @endforeach
+        <div class="col-lg-3">
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h2>${{number_format($totaldia)}}</h2>
+                    <p>Ventas total dia</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                    Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -75,7 +66,19 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <i class="fas fa-chart-line"></i>
+                        Ventas - Dia
+                    </h4>
+                    <canvas id="ventas2"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <div class="row">
         <div class="col-12 grid-margin">
@@ -127,9 +130,46 @@
 @section('script')
 <script>
     $(function () {
-            var varVenta=document.getElementById('ventas').getContext('2d');
+                    
+    });
+
+</script>
+<script>
+
+
+    $(function () {
+        var varVenta=document.getElementById('ventas2').getContext('2d');
             var charVenta = new Chart(varVenta, {
                 type: 'line',
+                data: {
+                    labels: [<?php foreach ($ventasdia as $ventadia)
+                {
+                    $dia = $ventadia->dia;
+                    
+                    echo '"'. $dia.'",';} ?>],
+                    datasets: [{
+                        label: 'Ventas Diarias',
+                        data: [<?php foreach ($ventasdia as $reg)
+                        {echo ''. $reg->totaldia.',';} ?>],
+                        backgroundColor: 'rgba(255, 255, 255, 0)',
+                        borderColor: 'rgba(0, 0, 0, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+
+            var varVenta=document.getElementById('ventas').getContext('2d');
+            var charVenta = new Chart(varVenta, {
+                type: 'pie',
                 data: {
                     labels: [<?php foreach ($ventasmes as $reg)
                 {
@@ -141,8 +181,8 @@
                         label: 'Ventas',
                         data: [<?php foreach ($ventasmes as $reg)
                         {echo ''. $reg->totalmes.',';} ?>],
-                        backgroundColor: 'rgba(20, 204, 20, 1)',
-                        borderColor: 'rgba(54, 162, 235, 0.2)',
+                        backgroundColor:  ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                        borderColor: 'rgba(0, 0, 0, 1)',
                         borderWidth: 1
                     }]
                 },
@@ -156,34 +196,7 @@
                     }
                 }
             });
-            var varVenta=document.getElementById('ventas_diarias').getContext('2d');
-            var charVenta = new Chart(varVenta, {
-                type: 'bar',
-                data: {
-                    labels: [<?php foreach ($ventasdia as $ventadia)
-                {
-                    $dia = $ventadia->dia;
-                    
-                    echo '"'. $dia.'",';} ?>],
-                    datasets: [{
-                        label: 'Ventas',
-                        data: [<?php foreach ($ventasdia as $reg)
-                        {echo ''. $reg->totaldia.',';} ?>],
-                        backgroundColor: 'rgba(20, 204, 20, 1)',
-                        borderColor: 'rgba(54, 162, 235, 0.2)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
-                }
-            });
+           
     });
 </script>
 @endsection
