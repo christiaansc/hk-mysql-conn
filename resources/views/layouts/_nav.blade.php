@@ -53,13 +53,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="{{ route('reports.day')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por dia </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="{{ route('reports.date')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por fecha</p>
                 </a>

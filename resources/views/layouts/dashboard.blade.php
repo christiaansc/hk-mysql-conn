@@ -115,10 +115,12 @@
 <!-- AdminLTE for demo purposes -->
 {!! Html::script('/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') !!}
 
+
+
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-
-
 <script src="../../dist/js/demo.js"></script>
+<script src="../../dist/chart.js/Chart.min.js"></script>
+
 
 @yield('script')
 

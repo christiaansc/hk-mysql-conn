@@ -27,6 +27,9 @@ Route::get('ventas/pdf/{venta}', 'VentaController@pdf')->name('ventas.pdf');
 Route::get('ventas/print/{venta}', 'VentaController@print')->name('ventas.print');  
 
 
+Route::get('ventas/reports_day', 'ReportController@reports_day')->name('reports.day');
+Route::get('ventas/reports_date', 'ReportController@reports_date')->name('reports.date');
+Route::post('ventas/report_results', 'ReportController@report_results')->name('report.results');
 Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
 Route::resource('clientes', 'ClienteController')->names('clientes');
@@ -39,3 +42,4 @@ Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('
 
 Route::get('change_status/ventas/{venta}', 'VentaController@change_status')->name('change.status.ventas');
 Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
+
