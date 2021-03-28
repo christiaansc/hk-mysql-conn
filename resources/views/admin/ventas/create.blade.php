@@ -25,11 +25,7 @@
         <div class="card">
             {!! Form::open(['route'=>'ventas.store', 'method'=>'POST']) !!}
             <div class="card-body">
-                
-                <div class="d-flex justify-content-between">
-                    <h4 class="card-title">Registro de venta</h4>
-                </div>
-                
+                         
                 @include('admin.ventas._form')
                     
                     

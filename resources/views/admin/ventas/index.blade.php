@@ -35,6 +35,7 @@
 						<th>Id</th>
 						<th>Fecha</th>
 						<th>Total</th>
+						<th>Metodo pago</th>
 						<th>Estado</th>
 						<th>Acciones</th>
 						</tr>
@@ -48,6 +49,8 @@
 
 							</td>
 							<td>$ {{ number_format($venta->total)}}</td>
+							<td>{{ $venta->metodo_pago}}</td>
+
 
 							@if ($venta->stado == 'VALIDO')
 							<td>
@@ -75,8 +78,9 @@
 					<tfoot>
 					<tr>
 					<th>ID</th>
-					<th>Nombre</th>
-					<th>categoria</th>
+					<th>fecha</th>
+					<th>total</th>
+					<th>metodo pago</th>
 					<th>Estado</th>
 					<th>Acciones</th>
 					</tr>

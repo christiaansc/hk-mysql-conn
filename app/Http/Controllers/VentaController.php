@@ -42,7 +42,6 @@ class VentaController extends Controller
     {
 
         $productos = Product::where('stado', 'ACTIVO')->get();
-
         return view('admin.ventas.create', compact('productos'));
     }
 
@@ -54,6 +53,8 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request->metodoPago);
         $cliente_id = "1";
 
         
@@ -63,7 +64,7 @@ class VentaController extends Controller
             'fecha_venta'=>Carbon::now('America/Santiago'),
         ]);
         foreach ($request->product_id as $key => $product) {
-            $results[] = array("product_id"=>$request->product_id[$key], "cantidad"=>$request->quantity[$key], "precio"=>$request->price[$key], "descuento"=>$request->discount[$key], 'fecha_venta'=>Carbon::now('America/Santiago'));
+            $results[] = array("product_id"=>$request->product_id[$key],"metodo_pago"=>$request->metodo_pago, "cantidad"=>$request->quantity[$key], "precio"=>$request->price[$key], "descuento"=>$request->discount[$key], 'fecha_venta'=>Carbon::now('America/Santiago'));
 
             
         }

@@ -7,6 +7,14 @@
        
     </select>
 </div>
+<div class="form-group">
+    <label for="metodo_pago">Metodo Pago</label>
+    <select class="form-control" name="metodo_pago" id="metodo_pago">
+       
+        <option value="EFECTIVO">EFECTIVO</option>
+        <option value="DEBITO">DEBITO</option>
+    </select>
+</div>
 
 <div class="form-group">
   <label for="code">Código de barras</label>

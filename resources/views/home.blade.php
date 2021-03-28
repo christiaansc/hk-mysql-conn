@@ -42,7 +42,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h2>${{number_format($totaldia)}}</h2>
-                    <p>Ventas total dia</p>
+                    <p>Venta total dia</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-shopping-cart"></i>
