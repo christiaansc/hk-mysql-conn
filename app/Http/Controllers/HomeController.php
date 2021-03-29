@@ -50,6 +50,9 @@ class HomeController extends Controller
              
              $totalm= DB::select('SELECT sum(v.total) as totalmes from ventas v where v.stado="VALIDO"');
 
+             $totalDiaAnt= DB::select(' select sum(total) as totalAnt from ventas  where DATE(fecha_venta) =  DATE_SUB(curdate(),INTERVAL 1 DAY) AND stado="VALIDO"');
+
+
              
              $totalmesactual= DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now())');
 
@@ -57,6 +60,6 @@ class HomeController extends Controller
                 // dd($totalmes);ss
         
 
-              return view('home', compact(  'ventasmes', 'ventasdia', 'totales', 'productosvendidos', 'totaldia','totalm','totalmesactual'));
+              return view('home', compact(  'ventasmes', 'ventasdia', 'totales', 'productosvendidos', 'totaldia','totalm','totalmesactual', 'totalDiaAnt'));
     }
 }

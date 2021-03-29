@@ -22,7 +22,7 @@
   {!! Html::style('vendor/adminlte/dist/css/adminlte.min.css') !!}
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->

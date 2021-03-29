@@ -39,6 +39,23 @@
         </div>
         @endforeach
         <div class="col-lg-3">
+            <!-- small card -->
+        @foreach($totalDiaAnt as $diaAnt)
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h2>${{number_format($diaAnt->totalAnt)}}</h2>
+                    <p>Venta total Dia Anterior</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        @endforeach
+        <div class="col-lg-3">
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h2>${{number_format($totaldia)}}</h2>
