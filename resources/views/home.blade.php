@@ -160,14 +160,17 @@
                 type: 'line',
                 data: {
                     labels: [<?php foreach ($ventasdia as $ventadia)
-                {
-                    $dia = $ventadia->dia;
+                {   
+                    setlocale(LC_ALL, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+
+                
+                    $dia = strftime('%A',strtotime($ventadia->dia)) ;
                     
                     echo '"'. $dia.'",';} ?>],
                     datasets: [{
-                        label: 'Ventas Diarias',
+                        label: 'Total ventas Diarias',
                         data: [<?php foreach ($ventasdia as $reg)
-                        {echo ''. $reg->totaldia.',';} ?>],
+                        {echo ''. $reg->totalpordia.',';} ?>],
                         backgroundColor: 'rgba(255, 255, 255, 0)',
                         borderColor: 'rgba(0, 0, 0, 1)',
                         borderWidth: 1
@@ -190,10 +193,11 @@
                 data: {
                     labels: [<?php foreach ($ventasmes as $reg)
                 {
-                    setlocale(LC_TIME, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                    setlocale(LC_ALL, 'es_ES', 'Spanish_Spain', 'Spanish'); 
+                    
                     $mes_traducido=strftime('%B',strtotime($reg->mes));
                     
-                    echo '"'. $mes_traducido.'",';} ?>],
+                    echo '"'. $reg->mes.'",';} ?>],
                     datasets: [{
                         label: 'Ventas',
                         data: [<?php foreach ($ventasmes as $reg)
