@@ -114,6 +114,8 @@
 {!! Html::script('/vendor/adminlte/dist/js/adminlte.min.js') !!}
 <!-- AdminLTE for demo purposes -->
 {!! Html::script('/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') !!}
+{!! Html::script('/vendor/sweetalert/sweetalert.all.js') !!}
+
 
 
 
