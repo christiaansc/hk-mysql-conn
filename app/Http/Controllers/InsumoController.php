@@ -7,6 +7,8 @@ use App\Insumo;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class InsumoController extends Controller
 {
@@ -43,7 +45,7 @@ class InsumoController extends Controller
 
         // dd($gasto);
         $insrumo = Insumo::create($request->all());
-        return redirect()->route('insumos.index');  
+        return redirect()->route('insumos.index')->with('toast_success', 'Creado Exitosamente!');  
     }
 
     /**
@@ -86,11 +88,11 @@ class InsumoController extends Controller
      * @param  \App\Insumo  $insumo
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(Insumo $insumo)
-    // {
-    //     $insumo->delete();
-    //     return redirect()->route('insumos.index');
-    // }
+    public function destroy(Insumo $insumo)
+    {
+        $insumo->delete();
+        return redirect()->route('insumos.index')->with('toast_success', 'Eliminado Exitosamente!');
+    }
 
     public function delete($id)
     {

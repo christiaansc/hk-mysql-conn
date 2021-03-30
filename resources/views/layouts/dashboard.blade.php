@@ -120,9 +120,11 @@
 
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/chart.js/Chart.min.js"></script>
 
+@include('sweetalert::alert')
 
 @yield('script')
 

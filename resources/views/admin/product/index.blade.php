@@ -63,7 +63,7 @@
                                     @endif
                                                                        
                                     <td >
-                                        {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE']) !!}
+                                        {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE'] ) !!}
 
                                         <a class="btn  btn-info btn-sm" href="{{route('products.edit', $product)}}" title="Editar">
                                            
@@ -108,10 +108,10 @@
 
 @section('script')
 <script>
-  $(function () {
+  $(function () { 
     $('#example1').DataTable({
       "paging": true,
-      "lengthChange": true,
+      "lengthChange": true, 
       "responsive": true,
       "searching": true,
       "ordering": true,

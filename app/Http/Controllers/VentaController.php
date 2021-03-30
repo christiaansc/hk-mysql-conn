@@ -15,6 +15,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 
 
+
 class VentaController extends Controller
 {
     public function __construct()
@@ -70,7 +71,7 @@ class VentaController extends Controller
         }
         // dd($results);
         $sale->ventaDetalle()->createMany($results);
-        return redirect()->route('ventas.index');
+        return redirect()->route('ventas.index')->with('toast_success', 'Venta registrada Exitosamente!');
     }
 
     /**

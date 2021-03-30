@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                       <label for="codigo">Código de barras</label>
-                      <input type="text" name="codigo" id="codigo" class="form-control" required>
+                      <input type="text" name="codigo" id="codigo" class="form-control" >
                       <!-- <small id="helpId" class="text-muted">Campo opcional</small> -->
                     </div>
 

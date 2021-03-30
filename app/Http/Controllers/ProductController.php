@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -21,6 +23,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         $products = Product::get();
         return view('admin.product.index', compact('products'));
     }
@@ -61,7 +64,8 @@ class ProductController extends Controller
             $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
             $waffle->update(['codigo'=>$numeroConCeros]);
         }
-        return redirect()->route('products.index');
+        // return redirect()->route('products.index')->withSuccessMessage('Agregado exitosamente');
+        return redirect('products')->with('toast_success', 'Creado Exitosamente!');
 
     }
     /**
@@ -123,12 +127,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+
         $image_path = public_path().'/image/'.$product->image;   
         if(File::exists($image_path)){     
             File::delete(public_path('/image/'.$product->image)); 
         }
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('toast_success', 'Eliminado Exitosamente!');
     }
     public function change_status( Product $product)
     {
