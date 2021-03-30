@@ -50,13 +50,13 @@
                                   
                                     @if ($product->stado == 'ACTIVO')
                                     <td>
-                                        <a class="button btn btn-success" href="{{route('change.status.products', $product)}}" title="Editar">
+                                        <a class="button btn btn-success btn-sm" href="{{route('change.status.products', $product)}}" title="Editar">
                                             Activo <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="button btn btn-danger" href="{{route('change.status.products', $product)}}" title="Editar">
+                                        <a class="button btn btn-danger btn-sm" href="{{route('change.status.products', $product)}}" title="Editar">
                                             Desactivado <i class="fas fa-times"></i>
                                         </a>
                                     </td>

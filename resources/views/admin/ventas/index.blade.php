@@ -54,13 +54,13 @@
 
 							@if ($venta->stado == 'VALIDO')
 							<td>
-							<a class="button btn btn-success" href="{{route('change.status.ventas', $venta)}}" title="Editar">
+							<a class="button btn btn-success btn-sm" href="{{route('change.status.ventas', $venta)}}" title="Editar">
 							Activo <i class="fas fa-check"></i>
 							</a>
 							</td>
 							@else
 							<td>
-							<a class="button btn btn-danger" href="{{route('change.status.ventas', $venta)}}" title="Editar">
+							<a class="button btn btn-danger btn-sm" href="{{route('change.status.ventas', $venta)}}" title="Editar">
 							Cancelada <i class="fas fa-times"></i>
 							</a>
 							</td>

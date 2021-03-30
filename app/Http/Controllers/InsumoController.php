@@ -41,9 +41,7 @@ class InsumoController extends Controller
      */
     public function store(Request $request)
     {
-        $gasto = $request->stock* $request->precioCompra;
 
-        // dd($gasto);
         $insrumo = Insumo::create($request->all());
         return redirect()->route('insumos.index')->with('toast_success', 'Creado Exitosamente!');  
     }
