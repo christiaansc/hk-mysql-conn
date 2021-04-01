@@ -39,8 +39,7 @@ Route::resource('insumos', 'InsumoController')->names('insumos');
 Route::resource('users', 'UserController')->names('users');
 
 
-Route::post('delete/{id}', 'InsumoController@delete')->name('delete');
-
+Route::patch('/editInsumo', 'InsumoController@editInsumo')->name('editInsumo');
 
 
 Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');

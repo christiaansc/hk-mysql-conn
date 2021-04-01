@@ -68,7 +68,7 @@
                                     <td >
                                       
                                       {!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
-                                        <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" title="Editar">
+                                        <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $insumo->id }} title="Editar">
                                            
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -81,20 +81,19 @@
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
-                                @endforeach 
-                </tbody>
-                <tfoot>
-                <tr>
-                <th>Nombre</th>
-                  <th>Descripcion</th>
-                  <th>Precio Compra</th>
-                  <th>Cantidad</th>
-                  <th>Estado</th>
-                  <th>Acciones</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
+                              </tbody>
+                              <tfoot>
+                                <tr>
+                                  <th>Nombre</th>
+                                  <th>Descripcion</th>
+                                  <th>Precio Compra</th>
+                                  <th>Cantidad</th>
+                                  <th>Estado</th>
+                                  <th>Acciones</th>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -104,8 +103,8 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-    </div>
-
+  </div>
+  
   <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -116,10 +115,13 @@
               </button>
             </div>
             <div class="modal-body">
-              {!! Form::model($insumo,['route'=>['insumos.update',$insumo], 'method'=>'PUT']) !!}
-            <div class="form-group">
-                    <label for="cantidad">CANTIDAD</label>
-                    <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId"  value="{{$insumo->stock}}"required>
+              <form  action="{{route('editInsumo')}}" method="POST">
+                @csrf
+                {{method_field('patch')}}
+                <div class="form-group">
+                  <label for="cantidad">CANTIDAD</label>
+                  <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId"  value="{{$insumo->stock}}"required>
+                  <input type="hidden" class="form-control" name="id" id="id" value="{{$insumo->id}}">
                 </div>
                 
               </div>
@@ -127,19 +129,20 @@
                 <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success">Modificar</button>
               </div>
-              {!! Form::close() !!}
+            </form>
             </div>
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
         </div>
+        @endforeach 
 @endsection
-
+        
 
 @section('script')
+
 <script>
   $(function () {
-
     $('#example1').DataTable({
       "paging": true,
       "lengthChange": true,

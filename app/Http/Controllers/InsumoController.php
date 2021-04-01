@@ -65,8 +65,21 @@ class InsumoController extends Controller
      */
     public function edit(Insumo $insumo)
     {
-        //
+        dd("sda");
     }
+
+    public function editInsumo(Request $request)
+    {
+      
+        $id = $request->id;
+        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad]);
+        if($insumo){
+            return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
+        }else{
+            return redirect()->route('insumos.index')->with('toast_error', 'Ops Algo salio mal!');  
+        }  
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -77,10 +90,9 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
-        // dd($request->cantidad);
+        dd($request);
         $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad]);
         return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
-
         
     }
 
