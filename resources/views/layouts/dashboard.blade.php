@@ -22,11 +22,11 @@
   {!! Html::style('vendor/adminlte/dist/css/adminlte.min.css') !!}
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
+<body class="hold-transition  dark-mode sidebar-mini layout-fixed sidebar-collapse ">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand navbar-dark">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -77,7 +77,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper pt-4 pb-4">
     <!-- Content Header (Page header) -->
-
+   
     @yield('breadcrumb')
 
     <!-- Main content -->
@@ -98,6 +98,10 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+
+  <a id="back-to-top" href="#" class="btn btn-success back-to-top" role="button" aria-label="Scroll to top">
+      <i class="fas fa-chevron-up"></i>
+    </a>
 </div>
 <!-- ./wrapper -->
 

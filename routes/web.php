@@ -36,6 +36,8 @@ Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
 Route::resource('clientes', 'ClienteController')->names('clientes');
 Route::resource('insumos', 'InsumoController')->names('insumos');
+Route::resource('users', 'UserController')->names('users');
+
 
 Route::post('delete/{id}', 'InsumoController@delete')->name('delete');
 
@@ -51,3 +53,8 @@ Route::get('change_status/products/{product}', 'ProductController@change_status'
 Route::get('change_status/Insumos/{insumo}', 'InsumoController@change_status')->name('change.status.insumos');
 
 
+
+// Route::resource('permisos', 'PermissionController')
+//         ->name('permisos')
+//         ->parameters(['permisos' =>'permission'])
+//         ->only(['index','show']);

@@ -69,7 +69,31 @@
                 </a>
             </div>
         </div>
-    </div>
+        <div class="col-lg-6">
+            <div class="info-box bg-gradient-secondary">
+                <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><strong>Meta diaria</strong></span>
+                    <span class="info-box-number">${{number_format($totaldia)}} / $ 60.000</span>
+    
+                <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="info-box bg-gradient-secondary">
+                <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+        @foreach($totalmesactual as $tmactual)
+
+                <div class="info-box-content">
+                    <span class="info-box-text"><strong>Meta Mensual</strong></span>
+                    <span class="info-box-number">${{number_format($tmactual->totalmesactual)}} / $ 1.000.000</span>
+        @endforeach
+                <!-- /.info-box-content -->
+                </div>
+            </div>
+        </div>
 
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
