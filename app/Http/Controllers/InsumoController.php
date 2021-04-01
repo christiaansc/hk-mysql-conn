@@ -12,6 +12,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class InsumoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
