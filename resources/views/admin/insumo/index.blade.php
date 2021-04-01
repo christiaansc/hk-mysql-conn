@@ -66,9 +66,9 @@
                                     @endif
                                                                        
                                     <td >
-                                        {!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
-
-                                        <a class="btn  btn-info btn-sm" href="{{route('insumos.edit', $insumo)}}" title="Editar">
+                                      
+                                      {!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
+                                        <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" title="Editar">
                                            
                                             <i class="fas fa-edit"></i>
                                         </a>
@@ -106,7 +106,33 @@
     <!-- /.content -->
     </div>
 
-    
+  <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Default Modal</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {!! Form::model($insumo,['route'=>['insumos.update',$insumo], 'method'=>'PUT']) !!}
+            <div class="form-group">
+                    <label for="cantidad">CANTIDAD</label>
+                    <input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId"  value="{{$insumo->stock}}"required>
+                </div>
+                
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Modificar</button>
+              </div>
+              {!! Form::close() !!}
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 @endsection
 
 

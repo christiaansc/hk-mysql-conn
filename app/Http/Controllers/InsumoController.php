@@ -77,7 +77,11 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
-        //
+        // dd($request->cantidad);
+        $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad]);
+        return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
+
+        
     }
 
     /**
@@ -90,24 +94,6 @@ class InsumoController extends Controller
     {
         $insumo->delete();
         return redirect()->route('insumos.index')->with('toast_success', 'Eliminado Exitosamente!');
-    }
-
-    public function delete($id)
-    {
-        $delete = User::where('id', $id)->delete();
-        // check data deleted or not
-        if ($delete == 1) {
-            $success = true;
-            $message = "User deleted successfully";
-        } else {
-            $success = true;
-            $message = "User not found";
-        }
-        //  Return response
-        return response()->json([
-            'success' => $success,
-            'message' => $message,
-        ]);
     }
 
     public function change_status( Insumo $insumo)
