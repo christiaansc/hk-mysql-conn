@@ -32,9 +32,9 @@
               <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">
                 <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Descripcion</th>
-                  <th>Precio Compra</th>
+                  <th>Detalle</th>
+              
+               
                   <th>Cantidad</th>
                   <th>Estado</th>
                   <th>Acciones</th>
@@ -44,11 +44,9 @@
                 @foreach ($insumos as $insumo)
                                 <tr>
                                     <th scope="row">{{$insumo->nombre}}</th>
-                                    <td>
-                                        {{$insumo->descripcion}}
-                                    </td>
+                               
                                     
-                                    <td> $ {{number_format($insumo->precioCompra)}}</td>
+                                  
                                     <td>{{$insumo->stock}}</td>
                                   
                                     @if ($insumo->estado == 'ACTIVO')
@@ -85,9 +83,9 @@
                               </tbody>
                               <tfoot>
                                 <tr>
-                                  <th>Nombre</th>
-                                  <th>Descripcion</th>
-                                  <th>Precio Compra</th>
+                                  <th>Detalle</th>
+                                 
+                                
                                   <th>Cantidad</th>
                                   <th>Estado</th>
                                   <th>Acciones</th>

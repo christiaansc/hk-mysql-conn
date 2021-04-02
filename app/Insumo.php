@@ -8,9 +8,9 @@ class Insumo extends Model
 {
     protected $fillable = [     
         'nombre',
-        'descripcion',
+    
         'stock',
-        'precioCompra',
+    
         'estado',
         ];
 }

@@ -29,18 +29,12 @@
                     {!! Form::open(['route'=>'insumos.store', 'method'=>'POST','files' => true]) !!}
                    
                     <div class="form-group">
-                      <label for="nombre">Nombre</label>
+                      <label for="nombre">Detalle</label>
                       <input type="text" name="nombre" id="nombre" class="form-control" aria-describedby="helpId" required>
                     </div>
-                    <div class="form-group">
-                      <label for="descripcion">descripcion</label>
-                      <textarea name="descripcion" id="descripcion" cols="100" rows="4" class="form-control"></textarea>
-                    </div>
+           
 
-                    <div class="form-group">
-                        <label for="precioCompra">Precio de Compra</label>
-                        <input type="number" name="precioCompra" id="precioCompra" class="form-control" aria-describedby="helpId" required>
-                    </div>
+         
   
                     <div class="form-group">
                         <label for="stock">Cantidad</label>
