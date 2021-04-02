@@ -78,7 +78,7 @@ class InsumoController extends Controller
     {
       
         $id = $request->id;
-        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad]);
+        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad, 'precioCompra'=>$request->precioCompra]);
         if($insumo){
             return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
         }else{

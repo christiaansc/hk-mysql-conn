@@ -54,21 +54,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('products.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ventas</p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('products.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Productos</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/insumos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Inventario</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/gastos" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Gastos</p>
                 </a>
               </li>
             </ul>

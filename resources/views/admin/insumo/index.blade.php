@@ -59,28 +59,29 @@
                                     </td>
                                     @else
                                     <td>
-                                        <a class="button btn btn-danger btn-sm" href="{{route('change.status.insumos', $insumo)}}" title="Editar">
-                                            Desactivado <i class="fas fa-times"></i>
-                                        </a>
+                                      <a class="button btn btn-danger btn-sm" href="{{route('change.status.insumos', $insumo)}}" title="Editar">
+                                        Desactivado <i class="fas fa-times"></i>
+                                      </a>
                                     </td>
                                     @endif
-                                                                       
+                                    
                                     <td >
                                       
                                       {!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
-                                        <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $insumo->id }} title="Editar">
-                                           
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                      <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $insumo->id }} title="Editar">
                                         
-                                        <button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
-                                           
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-
-                                        {!! Form::close() !!}
+                                        <i class="fas fa-edit"></i>
+                                      </a>
+                                      
+                                      <button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
+                                        
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      
+                                      {!! Form::close() !!}
                                     </td>
-                                </tr>
+                                  </tr>
+                                  @endforeach 
                               </tbody>
                               <tfoot>
                                 <tr>
@@ -135,7 +136,6 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
-        @endforeach 
 @endsection
         
 

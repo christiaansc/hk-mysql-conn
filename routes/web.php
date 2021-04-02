@@ -37,9 +37,13 @@ Route::resource('products', 'ProductController')->names('products');
 Route::resource('clientes', 'ClienteController')->names('clientes');
 Route::resource('insumos', 'InsumoController')->names('insumos');
 Route::resource('users', 'UserController')->names('users');
+Route::resource('gastos', 'GastoController')->names('gastos');
+
 
 
 Route::patch('/editInsumo', 'InsumoController@editInsumo')->name('editInsumo');
+Route::patch('/editGasto', 'GastoController@editInsumo')->name('editGasto');
+
 
 
 Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
