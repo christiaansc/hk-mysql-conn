@@ -55,7 +55,6 @@
                                     
                                     <td>
 							{{\Carbon\Carbon::parse($gasto->fechaGasto)->format('d M y h:i')}}
-
 							</td>
                                     @if ($gasto->estado == 'PAGADO')
                                     <td>
