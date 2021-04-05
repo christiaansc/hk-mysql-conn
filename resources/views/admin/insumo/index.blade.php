@@ -61,8 +61,7 @@
                                         Desactivado <i class="fas fa-times"></i>
                                       </a>
                                     </td>
-                                    @endif
-                                    
+                                    @endif                                
                                     <td >
                                       
                                       {!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
