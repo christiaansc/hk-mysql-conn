@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Gasto;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +19,6 @@ class GastoController extends Controller
             $gastos = Gasto::get();
             return view('admin.gasto.index' , compact('gastos'));
 
-            
     }
 
     /**
@@ -39,7 +39,14 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $montoTotal = $request->monto * $request->cantidad;
+        $fechaGasto = Carbon::now('America/Santiago');
+        $gasto = Gasto::create($request->all() + [
+            'montoTotal' => $montoTotal,
+            'fechaGasto' => $fechaGasto
+            
+            ]);
+        return redirect()->route('gastos.index')->with('toast_success', 'Creado Exitosamente!');  
     }
 
     /**

@@ -32,7 +32,9 @@
                       <label for="nombre">Detalle</label>
                       <input type="text" name="nombre" id="nombre" class="form-control" aria-describedby="helpId" required>
                     </div>
-          
+           
+
+         
   
                     <div class="form-group">
                         <label for="stock">Cantidad</label>

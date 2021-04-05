@@ -23,7 +23,7 @@
 <div class="container-fluid">
 <div class="card">
 			<div class="card-header">
-				<a href="{{route('insumos.create')}}">
+				<a data-toggle="modal" data-target="#modal-add" >
 					<span class="btn btn-success">+ Crear nuevo gasto</span>
 				</a>
 			</div>
@@ -32,8 +32,9 @@
               <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">
                 <thead>
                 <tr>
-                  <th>Detalle</th>
-                
+                <th>id</th> 
+
+                  <th>Detalle</th> 
                   <th>Monto </th>
                   <th>Cantidad</th>
                   <th>Monto total</th>
@@ -46,9 +47,10 @@
                 <tbody>
                 @foreach ($gastos as $gasto)
                                 <tr>
-                                    <th scope="row">{{$gasto->nombre}}</th>
-                            
-                                    
+                                <th scope="row" >{{$gasto->id}}</th>
+
+                                    <th >{{$gasto->nombre}}</th>
+                                                      
                                     <td> $ {{number_format($gasto->monto)}}</td>
                                     <td>{{$gasto->cantidad}}</td>
                                     <td> $ {{number_format($gasto->montoTotal)}}</td>
@@ -58,14 +60,14 @@
 							</td>
                                     @if ($gasto->estado == 'PAGADO')
                                     <td>
-                                        <a class="button btn btn-success btn-sm" href="{{route('change.status.insumos', $gasto)}}" title="Editar">
+                                        <a class="button btn btn-success btn-sm"  title="Editar">
                                             PAGADO <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     @else
                                     <td>
-                                        <a class="button btn btn-warning btn-sm" href="{{route('change.status.insumos', $gasto)}}" title="Editar">
-                                            PENDIENTE <i class="fas fa-times"></i>
+                                        <a class="button btn btn-warning btn-sm"  title="Editar">
+                                            PENDIENTE  <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                     @endif
@@ -86,9 +88,11 @@
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>
+        @endforeach 
                               </tbody>
                               <tfoot>
                                 <tr>
+                                <th>id</th>
               
                                   <th>detalle</th>
                                   <th>monto</th>
@@ -121,7 +125,7 @@
                 @csrf
                 {{method_field('patch')}}
                 <div class="form-group">
-                    <input type="hidden" class="form-control" name="id" id="id" value="{{$gasto->id}}">
+                    <input type="hidden" class="form-control" name="id" id="id">
                       <label for="estado">Estado pago</label>
                       <select class="form-control" name="estado" id="estado">                    
                         <option value="PAGADO">PAGADO</option>
@@ -140,7 +144,36 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
-        @endforeach 
+        <div class="modal fade" id="modal-add">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <form  action="{{route('gastos.store')}}" method="POST">
+                @csrf            
+                <div class="form-group">
+                      <label for="nombre">Detalle</label>
+                      <input type="text" name="nombre" id="nombre" class="form-control" aria-describedby="helpId" required>
+                </div>
+                <div class="form-group">
+                      <label for="monto">Monto</label>
+                      <input type="text" name="monto" id="monto" class="form-control" aria-describedby="helpId" required>
+                </div>  
+   
+                <div class="form-group">
+                        <label for="cantidad">Cantidad</label>
+                        <input type="number" name="cantidad" id="cantidad" class="form-control" aria-describedby="helpId" required>
+                </div>                         
+              </div>
+              <div class="modal-footer justify-content-between">
+                <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Agregar</button>
+              </div>
+            </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
 @endsection
         
 
@@ -156,6 +189,7 @@
       "ordering": true,
       "info": true,
       "autsoWidth": true,
+      "order": [[ 0, 'desc' ], [ 1, 'desc' ]],
     });
   });
 </script>
