@@ -18,6 +18,7 @@ class gastoController extends Controller
             $gastos = Gasto::get();
             return view('admin.gasto.index' , compact('gastos'));
             
+            
     }
 
     /**
