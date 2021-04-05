@@ -6,7 +6,7 @@ use App\Gasto;
 
 use Illuminate\Http\Request;
 
-class gastoController extends Controller
+class GastoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class gastoController extends Controller
     {
             $gastos = Gasto::get();
             return view('admin.gasto.index' , compact('gastos'));
-            
+
             
     }
 
