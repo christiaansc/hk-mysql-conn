@@ -23,10 +23,20 @@
 <div class="container-fluid">
 <div class="card">
 			<div class="card-header">
-				<a data-toggle="modal" data-target="#modal-add" >
-					<span class="btn btn-success">+ Crear nuevo gasto</span>
-				</a>
-			</div>
+        <div class="row ">
+          <a data-toggle="modal" data-target="#modal-add" >
+            <span class="btn btn-success">+ Crear nuevo gasto</span>
+          </a>
+          <div class="col-12 col-md-4 text-center">
+                              <span>Gastos Totales: <b> </b></span>
+                              <div class="form-group">
+                                @foreach($gastosTotales as $gasto)
+                                  $<strong> {{number_format($gasto->totalGastos)}}</strong>
+                                @endforeach
+                              </div>
+                          </div>
+        </div>
+      </div>
             <!-- /.card-header -->
             <div class="table-responsive">
               <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">

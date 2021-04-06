@@ -6,18 +6,27 @@ use App\Gasto;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class GastoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       
+            $gastosTotales = DB::select('SELECT  sum(montoTotal) as totalGastos FROM gastos');
+            
             $gastos = Gasto::get();
-            return view('admin.gasto.index' , compact('gastos'));
+            return view('admin.gasto.index' , compact('gastos', 'gastosTotales'));
 
     }
 
