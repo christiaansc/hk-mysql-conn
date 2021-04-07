@@ -17,4 +17,11 @@ class Product extends Model
         'categoria_id',
         'provider_id',
         ];
+
+      
+            
+        public function categoria()
+        {
+            return $this->belongsTo(Categoria::class);
+        }
 }

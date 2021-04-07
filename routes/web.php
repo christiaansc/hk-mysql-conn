@@ -38,6 +38,8 @@ Route::resource('clientes', 'ClienteController')->names('clientes');
 Route::resource('insumos', 'InsumoController')->names('insumos');
 Route::resource('users', 'UserController')->names('users');
 Route::resource('gastos', 'GastoController')->names('gastos');
+Route::resource('categorias', 'CategoriaController')->names('categorias');
+
 
 
 

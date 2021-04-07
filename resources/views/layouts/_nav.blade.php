@@ -34,7 +34,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
+          <li class="nav-item">
             <a href="/home" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
@@ -55,25 +55,31 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-shopping-cart menu-icon"></i>
                   <p>Ventas</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('products.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-boxes menu-icon"></i>
                   <p>Productos</p>
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('categorias.index') }}" class="nav-link">
+                  <i class="fas fa-tags menu-icon"></i>
+                  <p>Categorias</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/insumos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-clipboard-check"></i>
                   <p>Inventario</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/gastos" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-donate menu-icon"></i>
                   <p>Gastos</p>
                 </a>
               </li>

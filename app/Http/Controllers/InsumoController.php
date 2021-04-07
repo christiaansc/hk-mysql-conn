@@ -96,7 +96,7 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
-        dd($request);
+        
         $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad]);
         return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
         

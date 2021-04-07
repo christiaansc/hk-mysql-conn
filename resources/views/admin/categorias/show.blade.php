@@ -1,17 +1,18 @@
 @extends('layouts.dashboard')
-@section('title','Gestión de productos')
+@section('title','Gestión de Categorias')
 
 @section('breadcrumb')
 <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Administracion de productos</h1>
+            <h1>Productos Que pertenecen a la  Categoria : {{ $categoria->nombre }} </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>      
-              <li class="breadcrumb-item active">Productos</li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/categorias">categorias</a></li>   
+              <li class="breadcrumb-item active">{{ $categoria->nombre }}</li>
             </ol>
           </div>
         </div>
@@ -23,9 +24,7 @@
 <div class="container-fluid">
 <div class="card">
 			<div class="card-header">
-				<a href="{{route('products.create')}}">
-					<span class="btn btn-success">+ Crear nuevo producto</span>
-				</a>
+			
 			</div>
             <!-- /.card-header -->
             <div class="table-responsive">
@@ -33,14 +32,15 @@
                 <thead>
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
+                  <th>Nombre producto</th>
                   <th>categoria</th>
-                  <th>Estado</th>
+                  <th>estado</th>
+
                   <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($products as $product)
+                @foreach ($categoria->products as $product)
                                 <tr>
                                     <th scope="row">{{$product->id}}</th>
                                     <td>
@@ -60,8 +60,7 @@
                                             Desactivado <i class="fas fa-times"></i>
                                         </a>
                                     </td>
-                                    @endif
-                                                                       
+                                    @endif                           
                                     <td >
                                         {!! Form::open(['route'=>['products.destroy',$product], 'method'=>'DELETE'] ) !!}
 
@@ -83,9 +82,10 @@
                 <tfoot>
                 <tr>
                   <th>ID</th>
-                  <th>Nombre</th>
-                  <th>categoria</th>
+                  <th>Nombre producto</th>
+                  <th>Categoria</th>
                   <th>Estado</th>
+
                   <th>Acciones</th>
                 </tr>
                 </tfoot>
@@ -102,7 +102,6 @@
     <!-- /.content -->
     </div>
 
-    
 @endsection
 
 

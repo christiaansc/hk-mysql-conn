@@ -38,7 +38,7 @@
                             <b>Proveedor</b> <a class="float-right">{{ $product->provider_id }} </a>
                         </li>
                         <li class="list-group-item">
-                            <b>Categoria</b> <a class="float-right">{{ $product->categoria_id }}</a>
+                            <b>Categoria</b> <a class="float-right">{{ $product->categoria->nombre }}</a>
                         </li>
                     </ul>
                     @if ($product->stado == 'ACTIVO')
