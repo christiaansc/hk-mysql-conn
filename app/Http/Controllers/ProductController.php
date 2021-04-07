@@ -38,8 +38,6 @@ class ProductController extends Controller
     public function create()
     {
         $categorias = Categoria::get();
-        // $proveedores = Prover::get();
-        // $categorias = ['id'=> 3,'nombre' =>'waffles Bike'];
         $proveedores = ['id'=> 1 , 'nombre'=>'waffles'];
         return view('admin.product.create', compact('categorias', 'proveedores'));
       

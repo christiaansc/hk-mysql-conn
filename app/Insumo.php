@@ -10,7 +10,8 @@ class Insumo extends Model
         'nombre',
     
         'stock',
-    
+        'tipo_insumo',
+        
         'estado',
         ];
 }

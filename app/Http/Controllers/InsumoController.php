@@ -25,8 +25,10 @@ class InsumoController extends Controller
      */
     public function index()
     {
-        $insumos = Insumo::get();
-        return view('admin.insumo.index' , compact('insumos'));
+     
+        $insumosLocal = Insumo::where('tipo_insumo', 'LOCAL')->get();
+        $insumosCocina = Insumo::where('tipo_insumo', 'COCINA')->get();
+        return view('admin.insumo.index' , compact('insumosCocina', 'insumosLocal'));
     }
 
     /**
@@ -78,7 +80,7 @@ class InsumoController extends Controller
     {
       
         $id = $request->id;
-        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad, 'precioCompra'=>$request->precioCompra]);
+        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad, 'tipo_insumo'=>$request->tipo_insumo]);
         if($insumo){
             return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
         }else{
@@ -96,8 +98,9 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
+        dd($request->all());
         
-        $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad]);
+        $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad , 'tipo_insumo' => $request->tipo_insumo]);
         return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
         
     }

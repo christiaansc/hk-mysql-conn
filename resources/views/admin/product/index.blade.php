@@ -35,6 +35,7 @@
                   <th>Id</th>
                   <th>Nombre</th>
                   <th>categoria</th>
+                  <th>codigo</th>
                   <th>Estado</th>
                   <th>Acciones</th>
                 </tr>
@@ -47,7 +48,7 @@
                                         <a href="{{route('products.show',$product)}}">{{$product->nombre}}</a>
                                     </td>
                                     <td>{{$product->categoria->nombre}}</td>
-                                  
+                                    <td>{{$product->codigo}}</td>              
                                     @if ($product->stado == 'ACTIVO')
                                     <td>
                                         <a class="button btn btn-success btn-sm" href="{{route('change.status.products', $product)}}" title="Editar">
@@ -85,6 +86,7 @@
                   <th>ID</th>
                   <th>Nombre</th>
                   <th>categoria</th>
+                  <th>Codigo</th>
                   <th>Estado</th>
                   <th>Acciones</th>
                 </tr>

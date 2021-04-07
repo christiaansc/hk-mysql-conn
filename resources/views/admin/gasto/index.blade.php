@@ -3,158 +3,143 @@
 
 @section('breadcrumb')
 <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Administracion de gastos</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>      
-              <li class="breadcrumb-item active">gastos</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1>Administracion de gastos</h1>
+			</div>
+			<div class="col-sm-6">
+				<ol class="breadcrumb float-sm-right">
+					<li class="breadcrumb-item"><a href="/">Home</a></li>      
+					<li class="breadcrumb-item active">gastos</li>
+				</ol>
+			</div>
+		</div>
+	</div><!-- /.container-fluid -->
+</section>
 @endsection
 @section('content')
-
 <div class="container-fluid">
-<div class="card">
-			<div class="card-header">
-        <div class="row ">
-          <a data-toggle="modal" data-target="#modal-add" >
-            <span class="btn btn-success">+ Crear nuevo gasto</span>
-          </a>
-          <div class="col-12 col-md-4 text-center">
-                              <span>Gastos Totales: <b> </b></span>
-                              <div class="form-group">
-                                @foreach($gastosTotales as $gasto)
-                                  $<strong> {{number_format($gasto->totalGastos)}}</strong>
-                                @endforeach
-                              </div>
-                          </div>
-        </div>
-      </div>
-            <!-- /.card-header -->
-            <div class="table-responsive">
-              <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">
-                <thead>
-                <tr>
-                <th>id</th> 
+	<div class="card">
 
-                  <th>Detalle</th> 
-                  <th>Monto </th>
-                  <th>Cantidad</th>
-                  <th>Monto total</th>
-
-                  <th>fecha gasto</th>
-                  <th>Estado</th>
-                  <th>Acciones</th>
-                </tr>
-                </thead>
+		<div class="card-header">
+			<div class="row">
+				<a data-toggle="modal" data-target="#modal-add" >
+				<span class="btn btn-success">+ Crear nuevo gasto</span>
+				</a>
+				<div class="col-12 col-md-4 text-center">
+					<span>Gastos Totales: <b> </b></span>
+					<div class="form-group">
+						@foreach($gastosTotales as $gasto)
+							$<strong> {{number_format($gasto->totalGastos)}}</strong>
+						@endforeach
+					</div>
+				</div>
+			</div>
+			<!-- /.card-header -->
+		</div>
+            
+        <div class="card-body table-responsive">
+            <table id="example1" class="table table-bordered table-striped"  style="width:100%">
+				<thead>
+					<tr>
+						<th>id</th> 
+						<th>Detalle</th> 
+						<th>Monto </th>
+						<th>Cantidad</th>
+						<th>Monto total</th>
+						<th>fecha gasto</th>
+						<th>Estado</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
                 <tbody>
-                @foreach ($gastos as $gasto)
-                                <tr>
-                                <th scope="row" >{{$gasto->id}}</th>
-
-                                    <th >{{$gasto->nombre}}</th>
-                                                      
-                                    <td> $ {{number_format($gasto->monto)}}</td>
-                                    <td>{{$gasto->cantidad}}</td>
-                                    <td> $ {{number_format($gasto->montoTotal)}}</td>
-                                    
-                                    <td>
-							{{\Carbon\Carbon::parse($gasto->fechaGasto)->format('d M y h:i')}}
+                	@foreach ($gastos as $gasto)
+                        <tr>
+                            <th scope="row" >{{$gasto->id}}</th>
+                            <th >{{$gasto->nombre}}</th>
+							<td> $ {{number_format($gasto->monto)}}</td>
+							<td>{{$gasto->cantidad}}</td>
+							<td> $ {{number_format($gasto->montoTotal)}}</td>                                  
+                            <td>
+								{{\Carbon\Carbon::parse($gasto->fechaGasto)->format('d M y h:i')}}
 							</td>
-                                    @if ($gasto->estado == 'PAGADO')
-                                    <td>
-                                        <a class="button btn btn-success btn-sm"  title="Editar">
-                                            PAGADO <i class="fas fa-check"></i>
-                                        </a>
-                                    </td>
-                                    @else
-                                    <td>
-                                        <a class="button btn btn-warning btn-sm"  title="Editar">
-                                            PENDIENTE  <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                    @endif
+                            @if ($gasto->estado == 'PAGADO')
+                                <td>
+									<a class="button btn btn-success btn-sm"  title="Editar">
+										PAGADO <i class="fas fa-check"></i>
+									</a>
+                                </td>
+                                @else
+								<td>
+									<a class="button btn btn-warning btn-sm"  title="Editar">
+										PENDIENTE  <i class="fas fa-times"></i>
+									</a>
+								</td>
+                            @endif
                                                                        
-                                    <td >
-                                      
-                                      {!! Form::open(['route'=>['gastos.destroy',$gasto], 'method'=>'DELETE']) !!}
-                                        <a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }} title="Editar">
-                                           
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        
-                                        <button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
-                                           
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-        @endforeach 
-                              </tbody>
-                              <tfoot>
-                                <tr>
-                                <th>id</th>
-              
-                                  <th>detalle</th>
-                                  <th>monto</th>
-                                  <th>Cantidad</th>
-                                <th>Monto total</th>
-                                  
-                                <th>fecha gasto</th>
-                                  <th>Estado</th>
-                                  <th>Acciones</th>
-                                </tr>
-                              </tfoot>
-                            </table>
-                          </div>
+                            <td >   
+								{!! Form::open(['route'=>['gastos.destroy',$gasto], 'method'=>'DELETE']) !!}
+									<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }} title="Editar">								
+										<i class="fas fa-edit"></i>
+									</a>
+									
+									<button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
+										<i class="fas fa-trash-alt"></i>
+									</button>
+								{!! Form::close() !!}
+                            </td>
+                    	</tr>
+       				@endforeach 
+                </tbody>
+				<tfoot>
+					<tr>
+						<th>id</th>
+						<th>detalle</th>
+						<th>monto</th>
+						<th>Cantidad</th>
+						<th>Monto total</th>
+						<th>fecha gasto</th>
+						<th>Estado</th>
+						<th>Acciones</th>
+					</tr>
+				</tfoot>
+            </table>
             <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
+        </div>    
+    	<!-- /.card -->
+    </div>
     <!-- /.content -->
-  </div>
+</div>
   
-  <div class="modal fade" id="modal-default">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <form  action="{{route('editGasto')}}" method="POST">
-                @csrf
-                {{method_field('patch')}}
-                <div class="form-group">
-                    <input type="hidden" class="form-control" name="id" id="id">
-                      <label for="estado">Estado pago</label>
-                      <select class="form-control" name="estado" id="estado">                    
-                        <option value="PAGADO">PAGADO</option>
-                        <option value="PENDIENTE">PENDIENTE</option>                      
-                      </select>
-                    </div>
-             
-              </div>
-              <div class="modal-footer justify-content-between">
-                <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Modificar</button>
-              </div>
-            </form>
-            </div>
-            <!-- /.modal-content -->
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-      <div class="modal fade" id="modal-add">
+<div class="modal fade" id="modal-default">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<form  action="{{route('editGasto')}}" method="POST">
+					@csrf
+					{{method_field('patch')}}
+					<div class="form-group">
+						<input type="hidden" class="form-control" name="id" id="id">
+						<label for="estado">Estado pago</label>
+						<select class="form-control" name="estado" id="estado">                    
+							<option value="PAGADO">PAGADO</option>
+							<option value="PENDIENTE">PENDIENTE</option>                      
+						</select>
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-success">Modificar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="modal-add">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
@@ -199,7 +184,7 @@
       "ordering": true,
       "info": true,
       "autsoWidth": true,
-      "order": [[ 0, 'desc' ], [ 1, 'desc' ]],
+      "order": [[ 0, 'desc' ]],
     });
   });
 </script>

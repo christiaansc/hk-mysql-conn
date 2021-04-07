@@ -33,7 +33,14 @@
                       <input type="text" name="nombre" id="nombre" class="form-control" aria-describedby="helpId" required>
                     </div>
            
-
+                    <div class="form-group">
+          
+                      <label for="tipo_insumo">Tipo Insumo</label>
+                      <select class="form-control" name="tipo_insumo" id="tipo_insumo">                    
+                        <option value="LOCAL">LOCAL</option>
+                        <option value="COCINA">COCINA</option>                      
+                      </select>
+                    </div>
          
   
                     <div class="form-group">
