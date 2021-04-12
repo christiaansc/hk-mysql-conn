@@ -55,12 +55,15 @@
                             
                     <div class="form-group">
                       <label for="categoria_id">Categoría</label>
-                      <select class="form-control" value="{{$product->categoria}}"  name="categoria_id" id="categoria_id">
-                      
-                        <option value="1">Waffles</option>
-                        <option value="1">Otros</option>
-
-                        
+  
+                      <select class="form-control" name="categoria_id" id="categoria_id">
+                        @foreach ($categorias as $categoria)
+                        <option value="{{$categoria->id}}" 
+                            @if ($categoria->id == $product->categoria_id)
+                            selected
+                            @endif
+                            >{{$categoria->nombre}}</option>
+                        @endforeach
                       </select>
                     </div>
 
@@ -72,12 +75,6 @@
 
                         </select>
                     </div>
-					
-                <div class="form-group">
-                  <label for="picture">Imagen del producto</label>
-                  <input type="file"  name="picture" id="picture" class="dropify form-control" />
-                </div>
-				
                      <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                      <a href="{{route('products.index')}}" class="btn btn-info">
                         Cancelar

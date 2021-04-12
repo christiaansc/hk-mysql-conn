@@ -13,7 +13,9 @@
        
         <option value="EFECTIVO">EFECTIVO</option>
         <option value="DEBITO">DEBITO</option>
+        <option value="CREDITO">CREDITO</option>
         <option value="TRANSFERENCIA">TRANSFERENCIA</option>
+
 
     </select>
 </div>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Insumo;
+use App\Categoria;
+
 
 
 use Illuminate\Http\Request;
@@ -73,22 +75,12 @@ class InsumoController extends Controller
      */
     public function edit(Insumo $insumo)
     {
-        dd("sda");
+        $categorias = Categoria::get();
+        $tiposInsumo = ['LOCAL' ,'COCINA'];
+       
+        return view('admin.insumo.edit', compact('insumo' , 'categorias','tiposInsumo'));
+
     }
-
-    public function editInsumo(Request $request)
-    {
-      
-        $id = $request->id;
-        $insumo = Insumo::find($id)->update(['stock'=>$request->cantidad, 'tipo_insumo'=>$request->tipo_insumo]);
-        if($insumo){
-            return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
-        }else{
-            return redirect()->route('insumos.index')->with('toast_error', 'Ops Algo salio mal!');  
-        }  
-    }
-
-
     /**
      * Update the specified resource in storage.
      *
@@ -98,10 +90,15 @@ class InsumoController extends Controller
      */
     public function update(Request $request, Insumo $insumo)
     {
-        dd($request->all());
+        // dd($request->all());
         
-        $insumo = Insumo::find($insumo->id)->update(['stock'=>$request->cantidad , 'tipo_insumo' => $request->tipo_insumo]);
-        return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
+        $id = $request->id;
+        $insumo = Insumo::find($id)->update($request->all());
+        if($insumo){
+            return redirect()->route('insumos.index')->with('toast_success', 'Modificdo Exitosamente!');  
+        }else{
+            return redirect()->route('insumos.index')->with('toast_error', 'Ops Algo salio mal!');  
+        }   
         
     }
 

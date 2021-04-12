@@ -79,7 +79,7 @@
 										
 										{!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
 
-											<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $insumo->id }} title="Editar">									
+											<a class="btn  btn-info btn-sm" href="{{route('insumos.edit', $insumo)}}"  title="Editar">									
 												<i class="fas fa-edit"></i>
 											</a>									
 											<button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">									
@@ -147,7 +147,7 @@
 										
 										{!! Form::open(['route'=>['insumos.destroy',$insumo], 'method'=>'DELETE']) !!}
 
-											<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $insumo->id }} title="Editar">									
+											<a class="btn  btn-info btn-sm"  href="{{route('insumos.edit', $insumo)}}"  title="Editar">									
 												<i class="fas fa-edit"></i>
 											</a>									
 											<button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">									
@@ -181,37 +181,7 @@
     <!-- /.container -->
 </div>
   
-<div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-body">
-				<form  action="{{route('editInsumo')}}" method="POST">
-					@csrf
-					{{method_field('patch')}}
-					<div class="form-group">
-						<label for="tipo_insumo">Tipo insumo</label>
-						<select class="form-control" name="tipo_insumo" id="tipo_insumo">                    
-							<option value="LOCAL">LOCAL</option>
-							<option value="COCINA">COCINA</option>                      
-                      	</select>
-					</div>
-					<div class="form-group">
-						<label for="cantidad">Stock</label>
-						<input type="number" class="form-control" name="cantidad" id="cantidad" aria-describedby="helpId"  value="{{$insumo->stock}}"required>
-						<input type="hidden" class="form-control" name="id" id="id" value="{{$insumo->id}}">
-					</div>
-					
-					<div class="modal-footer justify-content-between">
-						<button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="submit" class="btn btn-success">Modificar</button>
-					</div>
-				</form>
-			</div>
-		</div>
-    	<!-- /.modal-content -->
-    </div>
-	<!-- /.modal-dialog -->
-</div>
+
 @endsection
         
 

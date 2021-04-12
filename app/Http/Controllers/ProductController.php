@@ -87,9 +87,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        // $categorias = Categoria::get();
+        $categorias = Categoria::get();
         // $provers = Prover::get();
-        $categorias = ['id'=> 3,'nombre' =>'waffles Bike'];
+
         $proveedores = ['id'=> 1 , 'nombre'=>'waffles'];
         return view('admin.product.edit', compact('product', 'categorias', 'proveedores'));
     }

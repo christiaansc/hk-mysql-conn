@@ -41,10 +41,6 @@ Route::resource('gastos', 'GastoController')->names('gastos');
 Route::resource('categorias', 'CategoriaController')->names('categorias');
 
 
-
-
-
-Route::patch('/editInsumo', 'InsumoController@editInsumo')->name('editInsumo');
 Route::patch('/editGasto', 'GastoController@editInsumo')->name('editGasto');
 
 
