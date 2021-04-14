@@ -69,7 +69,7 @@ class HomeController extends Controller
                 'totalm',
                 'totalmesactual',
                 'totalDiaAnt',
-                'totaldia2',
+                'totaldia2'
             ));
     }
 }
