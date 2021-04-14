@@ -56,9 +56,10 @@
         </div>
         @endforeach
         <div class="col-lg-3">
+        @foreach($totaldia2 as $t_dia2)
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h2>${{number_format($totaldia)}}</h2>
+                    <h2>${{number_format($t_dia2->totaldia)}}</h2>
                     <p>Venta total dia</p>
                 </div>
                 <div class="icon">
@@ -69,17 +70,21 @@
                 </a>
             </div>
         </div>
+        @endforeach
         <div class="col-lg-6">
+        @foreach($totaldia2 as $t_dia2)
+
             <div class="small-box bg-secondary text-center">
                 <div class="inner">
                     <p><h5>META DIARIA</h5></p>
-                    <h2>${{number_format($totaldia)}} / $60,000</h2>
+                    <h2>${{number_format($t_dia2->totaldia)}} / $100,000</h2>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-pie"></i>
                 </div>
             
             </div>
+        @endforeach
         </div>
         <div class="col-lg-6">
             <div class="small-box bg-secondary text-center">

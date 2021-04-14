@@ -45,6 +45,9 @@ class HomeController extends Controller
              $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
              $totaldia = $sales->sum('total');
 
+             $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM `heroku-mysql`.ventas where date(fecha_venta) = curdate() and stado = "VALIDO"  order by id desc');
+             
+
              
              $totalm= DB::select('SELECT sum(v.total) as totalmes from ventas v where v.stado="VALIDO"');
 
@@ -58,6 +61,15 @@ class HomeController extends Controller
                 // dd($ventasdia);
         
 
-              return view('home', compact(  'ventasmes', 'ventasdia', 'totales', 'productosvendidos', 'totaldia','totalm','totalmesactual', 'totalDiaAnt'));
+              return view('home', compact(  'ventasmes',
+                'ventasdia',
+                'totales',
+                'productosvendidos',
+                'totaldia',
+                'totalm',
+                'totalmesactual',
+                'totalDiaAnt',
+                'totaldia2',
+            ));
     }
 }

@@ -38,13 +38,15 @@
                                 <strong>{{$sales->count()}}</strong>
                             </div>
                         </div>
+                    @foreach($totaldia2 as $t_dia2)
                         <div class="col-12 col-md-4 text-center">
                             <span>Total de ingresos: <b> </b></span>
                             <div class="form-group">
-                                $<strong> {{number_format($total)}}</strong>
+                                $<strong> {{number_format($t_dia2->totaldia)}}</strong>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
 
                     <div class="table-responsive">
