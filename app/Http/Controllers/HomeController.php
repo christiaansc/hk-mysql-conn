@@ -45,7 +45,7 @@ class HomeController extends Controller
              $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
              $totaldia = $sales->sum('total');
 
-             $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"  order by id desc');
+             $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"');
              
 
              

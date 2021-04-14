@@ -19,7 +19,7 @@ class ReportController extends Controller
 
     public function reports_day(){
 
-        $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"  order by id desc');
+        $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"');
 
         $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
         $total = $sales->sum('total');
