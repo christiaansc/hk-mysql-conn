@@ -54,22 +54,34 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request->metodoPago);
-        $cliente_id = "1";
-
-        
-        $sale = Venta::create($request->all()+[
-            'cliente_id' =>$cliente_id,
-            'user_id'=>Auth::user()->id,
-            'fecha_venta'=>Carbon::now('America/Santiago'),
+        $cliente_id         = "1";
+        $user_id            = Auth::user()->id;
+        $total              = $request->total;
+        $metodo_pago        = $request->metodo_pago;
+        $fecha_venta        = Carbon::now('America/Santiago');
+  
+        if($metodo_pago === "DEBITO"){
+                $desc_debito = ((($total * 1.15)/100)+ 30)*1.19;
+                $total = $total - $desc_debito;
+        }
+        if($metodo_pago === "CREDITO"){
+            $desc_credito = ((($total * 1.98)/100)+ 40)*1.19;
+            $total = $total - $desc_credito;
+            
+        }  
+        $sale = Venta::create([
+            'fecha_venta'   =>  $fecha_venta,
+            'total'         =>  $total,    
+            'cliente_id'    =>  $cliente_id,
+            'user_id'       =>  $user_id,
+            'metodo_pago'   =>  $metodo_pago
         ]);
+
         foreach ($request->product_id as $key => $product) {
             $results[] = array("product_id"=>$request->product_id[$key],"metodo_pago"=>$request->metodo_pago, "cantidad"=>$request->quantity[$key], "precio"=>$request->price[$key], "descuento"=>$request->discount[$key], 'fecha_venta'=>Carbon::now('America/Santiago'));
-
             
         }
-        // dd($results);
+        
         $sale->ventaDetalle()->createMany($results);
         return redirect()->route('ventas.index')->with('toast_success', 'Venta registrada Exitosamente!');
     }
