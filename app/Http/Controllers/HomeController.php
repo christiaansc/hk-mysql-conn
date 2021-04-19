@@ -42,34 +42,37 @@ class HomeController extends Controller
               and year(v.fecha_venta)=year(curdate()) 
               group by p.codigo ,p.nombre, p.id , p.stock order by sum(dv.cantidad) desc limit 10');
              
-             $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
-             $totaldia = $sales->sum('total');
+            //  $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
+            //  $totaldia = $sales->sum('total');
 
              $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"');
-             
-
-             
+                         
              $totalm= DB::select('SELECT sum(v.total) as totalmes from ventas v where v.stado="VALIDO"');
 
-             $totalDiaAnt= DB::select(' select sum(total) as totalAnt from ventas  where DATE(fecha_venta) =  DATE_SUB(curdate(),INTERVAL 1 DAY) AND stado="VALIDO"');
+             $totalDiaAnt= DB::select('SELECT sum(total) as totalAnt from ventas  where DATE(fecha_venta) =  DATE_SUB(curdate(),INTERVAL 1 DAY) AND stado="VALIDO"');
+
+             $totalmesactual = DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now())');
+
+            $t_efectivo      = DB::select('SELECT sum(total) as totalefectivo FROM ventas WHERE metodo_pago = "EFECTIVO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
+            $t_transferencia = DB::select('SELECT sum(total) as totaltransferencia FROM ventas WHERE metodo_pago = "TRANSFERENCIA" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
+            $t_debito        = DB::select('SELECT sum(total) as totaldebito FROM ventas WHERE metodo_pago = "DEBITO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
+            $t_credito       = DB::select('SELECT sum(total) as totalcredito FROM ventas WHERE metodo_pago = "CREDITO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
 
 
-             
-             $totalmesactual= DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now())');
 
-
-                // dd($ventasdia);
-        
-
+            // dd($t_transferencia);
               return view('home', compact(  'ventasmes',
                 'ventasdia',
                 'totales',
                 'productosvendidos',
-                'totaldia',
                 'totalm',
                 'totalmesactual',
                 'totalDiaAnt',
-                'totaldia2'
+                'totaldia2',
+                't_efectivo',
+                't_transferencia',
+                't_debito',
+                't_credito'
             ));
     }
 }

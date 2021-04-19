@@ -71,6 +71,77 @@
             </div>
         </div>
         @endforeach
+  
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+            <!-- small card -->
+        @foreach($t_credito as $credito)
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h2>${{number_format($credito->totalcredito)}}</h2>
+                    <p>TOTAL VENTAS CREDITO</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        @endforeach
+        <div class="col-lg-3">
+            <!-- small card -->
+        @foreach($t_debito as $debito)
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h2>${{number_format($debito->totaldebito)}}</h2>
+                    <p>TOTAL VENTAS DEBITO</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        @endforeach
+        <div class="col-lg-3">
+            <!-- small card -->
+        @foreach($t_transferencia as $transferencia)
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h2>${{number_format($transferencia->totaltransferencia)}}</h2>
+                    <p>TOTAL VENTAS TRANSFERENCIA</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        @endforeach
+        <div class="col-lg-3">
+        @foreach($t_efectivo as $efectivo)
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h2>${{number_format($efectivo->totalefectivo)}}</h2>
+                    <p>TOTAL VENTAS EFECTIVO</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-cash-register"></i>
+                </div>
+                <a href="{{route('ventas.index')}}" class="small-box-footer">
+                    Mas info <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+        @endforeach
         <div class="col-lg-6">
         @foreach($totaldia2 as $t_dia2)
 

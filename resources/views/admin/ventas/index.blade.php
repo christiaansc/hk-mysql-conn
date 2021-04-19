@@ -60,7 +60,7 @@
 							</td>
 							@else
 							<td>
-							<a class="button btn btn-danger btn-sm" href="{{route('change.status.ventas', $venta)}}" title="Editar">
+							<a class="button btn btn-danger btn-sm" href="#" title="Editar">
 							Cancelada <i class="fas fa-times"></i>
 							</a>
 							</td>
