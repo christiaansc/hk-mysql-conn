@@ -67,6 +67,10 @@ function mostrarValores() {
 }
 
 var product_id2 = $('#product_id');
+var pedidosya = $('#pedidosya');
+
+
+
 
     product_id2.change(function(){
         
@@ -119,7 +123,7 @@ function agregar() {
     product_id = datosProducto[0];
     producto = $("#product_id option:selected").text();
     quantity = $("#quantity").val();
-    discount = $("#discount").val();
+    discount = "0";
     price = $("#price").val();
     stock = $("#stock").val();
     impuesto = $("#tax").val();
@@ -173,11 +177,13 @@ function evaluar() {
 }
 function eliminar(index) {
     total = total - subtotal[index];
-    total_impuesto = total * impuesto / 100;
+    // total_impuesto = total * impuesto / 100;
+    total_impuesto = 0;
+
     total_pagar_html = total + total_impuesto;
-    $("#total").html("PEN" + total);
-    $("#total_impuesto").html("PEN" + total_impuesto);
-    $("#total_pagar_html").html("PEN" + total_pagar_html);
+    $("#total").html("CLP" + total);
+    // $("#total_impuesto").html("PEN" + total_impuesto);
+    $("#total_pagar_html").html("CLP" + total_pagar_html);
     $("#total_pagar").val(total_pagar_html.toFixed(2));
     $("#fila" + index).remove();
     evaluar();

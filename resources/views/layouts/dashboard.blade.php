@@ -15,7 +15,11 @@
   <!-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> -->
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
   {!! Html::style('vendor/fontawesome-free/css/all.min.css') !!}
+  
+
 
   {!! Html::style('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') !!}
 
@@ -124,6 +128,7 @@
 
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/chart.js/Chart.min.js"></script>
