@@ -2,5 +2,5 @@
 deployment:
  tasks:
  - export DEPLOYPATH=/home/wafflesb/public_html/adm-wb
- - /bin/cp -a* $DEPLOYPATH
+ - /bin/cp -fr * $DEPLOYPATH
  
