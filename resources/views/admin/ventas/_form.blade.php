@@ -63,6 +63,7 @@
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         </div>
     </div>
+    
 </div>
 
     <!-- <div class="form-group col-md-3">
