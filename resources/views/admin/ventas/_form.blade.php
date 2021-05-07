@@ -18,13 +18,13 @@
 
     </select>
 </div>
-
+<!-- 
 <div class="form-group col-md-4">
         <div class="form-group">
             <input type="checkbox" data-toggle="toggle" id="pedidosya"  name="pedidosya" class="form-control" data-on="" data-onstyle="success" data-offstyle="danger">         
              
           </div>
-    </div>
+    </div> -->
 
 <div class="form-group">
   <label for="code">Código de barras</label>
@@ -50,28 +50,20 @@
             <input type="text" name="" id="stock" value="" class="form-control" disabled>
           </div>
     </div> -->
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-2">
         <div class="form-group">
             <label for="price">Precio de venta</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
         </div>
     </div>
-</div>
  
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-2">
         <div class="form-group">
             <label for="quantity">Cantidad</label>
             <input type="number" class="form-control" name="quantity" id="quantity" aria-describedby="helpId">
         </div>
     </div>
-    
- 
-
- 
-
-
- 
-
+</div>
 
     <!-- <div class="form-group col-md-3">
         <label for="tax">Impuesto</label>
