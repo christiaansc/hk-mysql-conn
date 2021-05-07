@@ -28,10 +28,18 @@
 				<span class="btn btn-success">+ Crear nuevo gasto</span>
 				</a>
 				<div class="col-12 col-md-4 text-center">
-					<span>Gastos Totales: <b> </b></span>
+					<span>Gastos totales: <b> </b></span>
 					<div class="form-group">
 						@foreach($gastosTotales as $gasto)
 							$<strong> {{number_format($gasto->totalGastos)}}</strong>
+						@endforeach
+					</div>
+				</div>
+				<div class="col-12 col-md-4 text-center">
+					<span>Gasto mes actual: <b> </b></span>
+					<div class="form-group">
+						@foreach($totalmesactual as $gastom)
+							$<strong> {{number_format($gastom->totalmesactual)}}</strong>
 						@endforeach
 					</div>
 				</div>

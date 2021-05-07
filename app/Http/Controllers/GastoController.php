@@ -24,9 +24,11 @@ class GastoController extends Controller
     public function index()
     {       
             $gastosTotales = DB::select('SELECT  sum(montoTotal) as totalGastos FROM gastos');
+            $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where  month(fechaGasto) = month(now())');
+
             
             $gastos = Gasto::get();
-            return view('admin.gasto.index' , compact('gastos', 'gastosTotales'));
+            return view('admin.gasto.index' , compact('gastos', 'gastosTotales','totalmesactual'));
 
     }
 
