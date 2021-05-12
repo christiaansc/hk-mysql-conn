@@ -15,15 +15,16 @@
   <!-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> -->
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
-  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
   {!! Html::style('vendor/fontawesome-free/css/all.min.css') !!}
   
-
-
   {!! Html::style('vendor/overlayScrollbars/css/OverlayScrollbars.min.css') !!}
 
   {!! Html::style('vendor/adminlte/dist/css/adminlte.min.css') !!}
+
+  {!! Html::style('vendor/select2/css/select2.min.css') !!}
+  {!! Html::style('vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css') !!}
+
 
 </head>
 <body class="hold-transition  dark-mode sidebar-mini layout-fixed sidebar-collapse ">
@@ -124,11 +125,15 @@
 {!! Html::script('/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') !!}
 {!! Html::script('/vendor/sweetalert/sweetalert.all.js') !!}
 
+{!! Html::script('/vendor/select2/js/select2.full.min.js') !!}
+
+
+
+
 
 
 
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/chart.js/Chart.min.js"></script>

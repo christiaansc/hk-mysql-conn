@@ -49,6 +49,11 @@ $(document).ready(function () {
     $("#agregar").click(function () {
         agregar();
     });
+
+
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
 });
 
 var cont = 1;
