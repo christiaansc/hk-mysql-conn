@@ -110,6 +110,9 @@ function obtener_registro(code){
             $("#price").val(data.precio);
             $("#stock").val(data.stock);
             $("#product_id").val(data.id);
+            $(".select2-product_id-container").val(data.id);
+
+            
         }
     });
 }

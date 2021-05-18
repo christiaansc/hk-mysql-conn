@@ -36,7 +36,8 @@
         <div class="form-group">
             <label for="product_id">Producto</label>
             <select class="form-control select2bs4" name="product_id" id="product_id">
-                <option value="" selected>Selecccione un producto</option>
+                
+                <option value="" disabled selected>Selecccione un producto</option>
                 @foreach ($productos as $producto)
                 <option value="{{$producto->id}}">{{$producto->nombre}}</option>
                 @endforeach
