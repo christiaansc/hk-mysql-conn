@@ -95,27 +95,26 @@ var pedidosya = $('#pedidosya');
 });
 
 
-$(obtener_registro());
+// $(obtener_registro());
 
-function obtener_registro(code){
-    $.ajax({
-        url: "{{route('get_products_by_barcode')}}",
-        type: 'GET',
-        data:{
-            code: code
-        },
-        dataType: 'json',
-        success:function(data){
-            // console.log(data);
-            $("#price").val(data.precio);
-            $("#stock").val(data.stock);
-            $("#product_id").val(data.id);
-            $(".select2-product_id-container").val(data.id);
-
+// function obtener_registro(code){
+//     $.ajax({
+//         url: "{{route('get_products_by_barcode')}}",
+//         type: 'GET',
+//         data:{
+//             code: code
+//         },
+//         dataType: 'json',
+//         success:function(data){
+//             // console.log(data);
+//             $("#price").val(data.precio);
+//             $("#stock").val(data.stock);
+//             $("#product_id").val(data.id);
+//             $(".select2-product_id-container").val(data.id);
             
-        }
-    });
-}
+//         }
+//     });
+// }
 $(document).on('keyup', '#code', function(){
     var valorResultado = $(this).val();
     if(valorResultado!=""){

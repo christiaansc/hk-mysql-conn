@@ -161,7 +161,7 @@
             <div class="small-box bg-secondary text-center">
                 <div class="inner">
                     <p><h5>META MENSUAL</h5></p>
-                    <h2>${{number_format($tmactual->totalmesactual)}} / $1,500,000</h2>
+                    <h2>${{number_format($tmactual->totalmesactual)}} / $2,000,000</h2>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-pie"></i>

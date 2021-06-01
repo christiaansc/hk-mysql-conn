@@ -26,10 +26,10 @@
           </div>
     </div> -->
 
-<div class="form-group">
+<!-- <div class="form-group">
   <label for="code">Código de barras</label>
   <input type="text" name="code" id="code" class="form-control" placeholder="" aria-describedby="helpId">
-</div>
+</div> -->
 
 <div class="form-row">
     <div class="form-group col-md-4">
