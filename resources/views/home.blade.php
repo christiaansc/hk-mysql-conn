@@ -202,8 +202,51 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
-                        <i class="fas fa-envelope"></i>
-                        Productos más vendidos
+                        <i class="fas fa-box"></i>
+                        Productos  vendidos de hoy 
+                    </h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th>Nombre</th>                                  
+                                    <th>Cantidad vendida</th>
+                                    <th>Ver detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($productos_vendidos_dia as $productosvendidohoy)
+                                <tr>
+                                    <td>{{$productosvendidohoy->id}}</td>
+                                    <td>{{$productosvendidohoy->name}}</td>
+                                    
+                                    <td><strong>{{$productosvendidohoy->quantity}}</strong> Unidades</td>
+                                    <td>
+                                        <a class="btn btn-primary"
+                                            href="{{route('products.show', $productosvendidohoy->id)}}">
+                                            <i class="far fa-eye"></i>
+                                            Ver detalles
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <i class="fas fa-box"></i>
+                        Productos más vendidos ( Mes actual )
                     </h4>
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -240,6 +283,7 @@
             </div>
         </div>
     </div>
+
 
     
 </div>

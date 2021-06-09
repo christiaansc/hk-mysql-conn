@@ -39,7 +39,14 @@ class HomeController extends Controller
               sum(dv.cantidad) as quantity, p.nombre as name , p.id as id , p.stock as stock from products p 
               inner join venta_detalles dv on p.id=dv.product_id 
               inner join ventas v on dv.venta_id=v.id where v.stado="VALIDO" 
-              and year(v.fecha_venta)=year(curdate()) 
+              and month(v.fecha_venta)=month(curdate()) 
+              group by p.codigo ,p.nombre, p.id , p.stock order by sum(dv.cantidad) desc limit 10');
+
+              $productos_vendidos_dia=DB::select('SELECT p.codigo as code, 
+              sum(dv.cantidad) as quantity, p.nombre as name , p.id as id , p.stock as stock from products p 
+              inner join venta_detalles dv on p.id=dv.product_id 
+              inner join ventas v on dv.venta_id=v.id where v.stado="VALIDO" 
+              and date(v.fecha_venta) = curdate()
               group by p.codigo ,p.nombre, p.id , p.stock order by sum(dv.cantidad) desc limit 10');
              
             //  $sales = Venta::WhereDate('fecha_venta', Carbon::today('America/Santiago'))->get();
@@ -65,6 +72,7 @@ class HomeController extends Controller
                 'ventasdia',
                 'totales',
                 'productosvendidos',
+                'productos_vendidos_dia',
                 'totalm',
                 'totalmesactual',
                 'totalDiaAnt',
