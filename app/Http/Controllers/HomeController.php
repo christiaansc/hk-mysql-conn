@@ -83,4 +83,26 @@ class HomeController extends Controller
                 't_credito'
             ));
     }
+
+    public function periodo( Request $request){
+
+        // print_r($request->codPeriodo);
+
+        switch ($request->codPeriodo) {
+            case '1':
+                print_r('1');
+                break;
+             case '2':
+                print_r('2');
+                break;
+             case '3':
+                print_r('3');
+                break; 
+            
+            default:
+                print_r("Seleccione periodo");
+                break;
+        }
+    }
+
 }

@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Venta;
 use App\Product;
 use App\Cliente;
-
-
 use Carbon\Carbon;
+
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Barryvdh\DomPDF\Facade as PDF;
+
 
 
 
@@ -30,7 +34,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::get();
+        $ventas = Venta::where('created_at', '>=', Carbon::now()->subMonth())->orderBy('id', 'desc')->get();   
          return view('admin.ventas.index', compact('ventas'));
     }
 

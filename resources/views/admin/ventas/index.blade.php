@@ -101,10 +101,7 @@
       "lengthChange": true,
       "responsive": true,
       "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "order": [[ 0, 'desc' ], [ 1, 'desc' ]],
+	  "ordering": false,
     });
   });
 </script>

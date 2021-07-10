@@ -48,6 +48,10 @@ Route::patch('/editGasto', 'GastoController@editInsumo')->name('editGasto');
 Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
 Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
 
+Route::get('periodo', 'HomeController@periodo')->name('periodo');
+
+
+
 
 
 Route::get('change_status/ventas/{venta}', 'VentaController@change_status')->name('change.status.ventas');
