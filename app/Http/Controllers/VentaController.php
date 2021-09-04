@@ -34,7 +34,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::whereMonth('created_at', '>=', Carbon::now()->month)->orderBy('id', 'desc')->get();   
+        $ventas = Venta::whereMonth('created_at', '=', Carbon::now()->month)->orderBy('id', 'desc')->get();   
 
          return view('admin.ventas.index', compact('ventas'));
     }
@@ -88,7 +88,7 @@ class VentaController extends Controller
         }
         
         $sale->ventaDetalle()->createMany($results);
-        return redirect()->route('ventas.index')->with('toast_success', 'Venta registrada Exitosamente!');
+        return redirect()->route('ventas.create')->with('toast_success', 'Venta registrada Exitosamente!');
     }
 
     /**

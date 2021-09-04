@@ -53,10 +53,10 @@
 					<tr>
 						<th>id</th> 
 						<th>Detalle</th> 
+						<th>fecha gasto</th>
 						<th>Monto </th>
 						<th>Cantidad</th>
 						<th>Monto total</th>
-						<th>fecha gasto</th>
 						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
@@ -66,12 +66,12 @@
                         <tr>
                             <th scope="row" >{{$gasto->id}}</th>
                             <th >{{$gasto->nombre}}</th>
+                            <td>
+								{{\Carbon\Carbon::parse($gasto->fechaGasto)->format('d M y')}}
+							</td>
 							<td> $ {{number_format($gasto->monto)}}</td>
 							<td>{{$gasto->cantidad}}</td>
 							<td> $ {{number_format($gasto->montoTotal)}}</td>                                  
-                            <td>
-								{{\Carbon\Carbon::parse($gasto->fechaGasto)->format('d M y h:i')}}
-							</td>
                             @if ($gasto->estado == 'PAGADO')
                                 <td>
 									<a class="button btn btn-success btn-sm"  title="Editar">
@@ -104,10 +104,10 @@
 					<tr>
 						<th>id</th>
 						<th>detalle</th>
+						<th>fecha gasto</th>
 						<th>monto</th>
 						<th>Cantidad</th>
 						<th>Monto total</th>
-						<th>fecha gasto</th>
 						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
