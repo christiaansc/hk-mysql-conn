@@ -3,6 +3,8 @@
 
 @section('content')
 <div class="container-fluid">
+
+    <!-- fitro periodo -->
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -24,6 +26,7 @@
         </div>
     </div>
 
+    <!-- Montos ventas diarias  -->
     <div class="row">
         <div class="col-lg-3">
                 <!-- small card -->
@@ -169,7 +172,7 @@
                 <div class="small-box bg-secondary text-center">
                     <div class="inner">
                         <p><h5>META DIARIA</h5></p>
-                        <h2>${{number_format($t_dia2->totaldia)}} / $100,000</h2>
+                        <h2>${{number_format($t_dia2->totaldia)}} / $120,000</h2>
                     </div>
                     <div class="icon">
                         <i class="fas fa-chart-pie"></i>
@@ -182,7 +185,7 @@
                 <div class="small-box bg-secondary text-center">
                     <div class="inner">
                         <p><h5>META MENSUAL</h5></p>
-                        <h2>${{number_format($tmactual->totalmesactual)}} / $2,000,000</h2>
+                        <h2>${{number_format($tmactual->totalmesactual)}} / $4,500,000</h2>
                     </div>
                     <div class="icon">
                         <i class="fas fa-chart-pie"></i>
@@ -192,6 +195,7 @@
             </div>
     </div>
 
+    <!--  grafica ventas diarias y mensuales -->
     <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
             <div class="card">
@@ -217,7 +221,7 @@
         </div>
     </div>
     
-
+    <!-- Prooductos vendidos de hoy  -->
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
@@ -260,7 +264,7 @@
         </div>
     </div>
 
-
+    <!-- Productos mas vendidos del mes  -->
     <div class="row">
         <div class="col-12 grid-margin">
             <div class="card">
