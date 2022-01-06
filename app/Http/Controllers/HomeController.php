@@ -90,19 +90,39 @@ class HomeController extends Controller
 
         switch ($request->codPeriodo) {
             case '1':
-                print_r('1');
+                //print_r('1');
+                $sq = " AND DATE(fecha_venta)  = CURDATE()";
                 break;
              case '2':
-                print_r('2');
+                //print_r('2');
+                $sq = " AND DATE(fecha_venta)  = DATE_SUB(CURDATE(),INTERVAL 1 DAY) ";
                 break;
              case '3':
-                print_r('3');
+                //print_r('3');
+                $sq = " AND month(fecha_venta) = month(now()) AND YEAR(fecha_venta) = YEAR(now())  ";
                 break; 
             
             default:
                 print_r("Seleccione periodo");
                 break;
         }
+
+
+        $data = array();
+        $t_efectivo      = DB::select('SELECT IFNULL(sum(total),0) as totalefectivo FROM ventas WHERE metodo_pago = "EFECTIVO" AND stado = "VALIDO"  ' . $sq   );
+        $t_transferencia = DB::select('SELECT IFNULL(sum(total),0) as totaltransferencia FROM ventas WHERE metodo_pago = "TRANSFERENCIA" AND stado = "VALIDO"  ' . $sq );
+        $t_debito        = DB::select('SELECT IFNULL(sum(total),0) as totaldebito FROM ventas WHERE metodo_pago = "DEBITO" AND stado = "VALIDO"  ' . $sq);
+        $t_credito       = DB::select('SELECT IFNULL(sum(total),0) as totalcredito FROM ventas WHERE metodo_pago = "CREDITO" AND stado = "VALIDO"  ' .  $sq);
+
+        $data["t_credito"] = $t_credito[0]->totalcredito;
+        $data["t_debito"] = $t_debito[0]->totaldebito;
+        $data["t_transferencia"] = $t_transferencia[0]->totaltransferencia;
+        $data["t_efectivo"] = $t_efectivo[0]->totalefectivo  ;
+        
+
+
+        return response()->json( $data);
+
     }
 
 }

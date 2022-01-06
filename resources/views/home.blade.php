@@ -12,7 +12,7 @@
                         <div class="form-group col-lg-2">
                             <label for="periodo">FILTRO PERIODO</label>
                             <select class="form-control" name="periodo" id="periodo">  
-                                <option >PERIODO</option>
+                                <option value="0" >PERIODO</option>
                                 <option value="1">HOY</option>
                                 <option value="2">AYER</option>
                                 <option value="3">ESTE MES</option>
@@ -104,7 +104,7 @@
             @foreach($t_credito as $credito)
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h2>${{number_format($credito->totalcredito)}}</h2>
+                    <h2 id="t_credito">${{number_format($credito->totalcredito)}}</h2>
                         <p>TOTAL VENTAS CREDITO</p>
                     </div>
                     <div class="icon">
@@ -121,7 +121,7 @@
             @foreach($t_debito as $debito)
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h2>${{number_format($debito->totaldebito)}}</h2>
+                    <h2 id="t_debito">${{number_format($debito->totaldebito)}}</h2>
                         <p>TOTAL VENTAS DEBITO</p>
                     </div>
                     <div class="icon">
@@ -138,7 +138,7 @@
             @foreach($t_transferencia as $transferencia)
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h2>${{number_format($transferencia->totaltransferencia)}}</h2>
+                    <h2 id="t_transfe">${{number_format($transferencia->totaltransferencia)}}</h2>
                         <p>TOTAL VENTAS TRANSFERENCIA</p>
                     </div>
                     <div class="icon">
@@ -154,7 +154,7 @@
             @foreach($t_efectivo as $efectivo)
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h2>${{number_format($efectivo->totalefectivo)}}</h2>
+                        <h2 id="t_efectivo">${{number_format($efectivo->totalefectivo)}}</h2>
                         <p>TOTAL VENTAS EFECTIVO</p>
                     </div>
                     <div class="icon">
@@ -316,21 +316,35 @@
 
     
 
-    $(function () {
-            $('#periodo').change(function(){
-                    var periodo = $('#periodo').val();
-                    $.ajax({
-                        url: "{{route('periodo')}}",
-                        method: 'GET',
-                        data:{
-                            codPeriodo: periodo,
-                        },
-                        success: function(data){
-                            console.log(data);                    
-                    }
-                });
-            });
+$(function () {
+    $('#periodo').change(function(){
+            var periodo = $('#periodo').val();
+            $.ajax({
+                url: "{{route('periodo')}}",
+                method: 'GET',
+                data:{
+                    codPeriodo: periodo,
+                },
+                success: function(data){
+                 
+                    credito = data["t_credito"];
+                    debito = data["t_debito"];
+                    transf = data["t_transferencia"];
+                    efectivo = data["t_efectivo"];
+
+                    // console.log(data);
+            
+                    $("#t_efectivo").text(efectivo);
+                    $("#t_transfe").text(transf);
+                    $("#t_debito").text(debito);
+                    $("#t_credito").text(credito);
+                   
+
+
+            }
+        });
     });
+});
 
 </script>
 <script>
