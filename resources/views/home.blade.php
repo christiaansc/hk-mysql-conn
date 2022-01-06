@@ -172,7 +172,7 @@
                 <div class="small-box bg-secondary text-center">
                     <div class="inner">
                         <p><h5>META DIARIA</h5></p>
-                        <h2>${{number_format($t_dia2->totaldia)}} / $120,000</h2>
+                        <h2>${{number_format($t_dia2->totaldia)}} / $250,000</h2>
                     </div>
                     <div class="icon">
                         <i class="fas fa-chart-pie"></i>
@@ -185,7 +185,7 @@
                 <div class="small-box bg-secondary text-center">
                     <div class="inner">
                         <p><h5>META MENSUAL</h5></p>
-                        <h2>${{number_format($tmactual->totalmesactual)}} / $4,500,000</h2>
+                        <h2>${{number_format($tmactual->totalmesactual)}} / $5,000,000</h2>
                     </div>
                     <div class="icon">
                         <i class="fas fa-chart-pie"></i>
