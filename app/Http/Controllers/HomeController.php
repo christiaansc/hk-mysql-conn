@@ -60,10 +60,10 @@ class HomeController extends Controller
 
              $totalmesactual = DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now())');
 
-            $t_efectivo      = DB::select('SELECT sum(total) as totalefectivo FROM ventas WHERE metodo_pago = "EFECTIVO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
-            $t_transferencia = DB::select('SELECT sum(total) as totaltransferencia FROM ventas WHERE metodo_pago = "TRANSFERENCIA" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
-            $t_debito        = DB::select('SELECT sum(total) as totaldebito FROM ventas WHERE metodo_pago = "DEBITO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
-            $t_credito       = DB::select('SELECT sum(total) as totalcredito FROM ventas WHERE metodo_pago = "CREDITO" AND stado = "VALIDO" AND month(fecha_venta) = month(now())');
+            $t_efectivo      = DB::select('SELECT sum(total) as totalefectivo FROM ventas WHERE metodo_pago = "EFECTIVO" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
+            $t_transferencia = DB::select('SELECT sum(total) as totaltransferencia FROM ventas WHERE metodo_pago = "TRANSFERENCIA" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
+            $t_debito        = DB::select('SELECT sum(total) as totaldebito FROM ventas WHERE metodo_pago = "DEBITO" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
+            $t_credito       = DB::select('SELECT sum(total) as totalcredito FROM ventas WHERE metodo_pago = "CREDITO" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
 
 
 

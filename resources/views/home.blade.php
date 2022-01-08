@@ -14,7 +14,6 @@
                             <select class="form-control" name="periodo" id="periodo">  
                                 <option value="0" >PERIODO</option>
                                 <option value="1">HOY</option>
-                                <option value="2">AYER</option>
                                 <option value="3">ESTE MES</option>
 
 
