@@ -25,6 +25,8 @@
   {!! Html::style('vendor/select2/css/select2.min.css') !!}
   {!! Html::style('vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css') !!}
 
+  @yield('css_page')
+
 
 </head>
 <body class="hold-transition  dark-mode sidebar-mini layout-fixed sidebar-collapse ">
@@ -53,7 +55,9 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                @auth
+                                  {{ Auth::user()->name }} 
+                                @endauth                                   
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -141,6 +145,12 @@
 @include('sweetalert::alert')
 
 @yield('script')
+@yield('js_user_page')
+@yield('js_role_page')
+
+
+
+
 
 
 

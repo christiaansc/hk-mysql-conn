@@ -19,7 +19,7 @@ Route::get('/', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->middleware('can:admin.home')->name('admin.home');
 
 // Rutas ventas
 Route::get('ventas/pdf/{venta}', 'VentaController@pdf')->name('ventas.pdf');
@@ -36,12 +36,17 @@ Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
 Route::resource('clientes', 'ClienteController')->names('clientes');
 Route::resource('insumos', 'InsumoController')->names('insumos');
-Route::resource('users', 'UserController')->names('users');
 Route::resource('gastos', 'GastoController')->names('gastos');
 Route::resource('categorias', 'CategoriaController')->names('categorias');
 
 
+Route::resource('roles', 'RolesController')->middleware('can:admin.home')->names('admin.roles');
+Route::resource('users', 'UserController')->middleware('can:admin.home')->names('admin.users');
+
+
+
 Route::patch('/editGasto', 'GastoController@editInsumo')->name('editGasto');
+
 
 
 

@@ -28,7 +28,7 @@
 				</a>
 			</div>
             <!-- /.card-header -->
-            <div class="table-responsive">
+            <div class="card-body table-responsive">
               <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"  style="width:100%">
                 <thead>
                 <tr>
@@ -39,7 +39,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($categorias as $categoria)
+               
+                @foreach($categorias as $categoria)
                                 <tr>
                                     <th scope="row">{{$categoria->id}}</th>
                                     <td>
@@ -67,6 +68,7 @@
                                     </td>
                                 </tr>
                                 @endforeach 
+                              
                 </tbody>
                 <tfoot>
                 <tr>
@@ -123,9 +125,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
-            {!! Form::model($categoria,['route'=>['categorias.update',$categoria], 'method'=>'PUT']) !!}
-
-                @csrf
+            <form  action="{{route('categorias.store')}}" method="POST">
 
                 <div class="form-group">
                       <label for="nombre">Nombre</label>
@@ -141,7 +141,8 @@
                 <button type="submit" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-success">Modificar</button>
               </div>
-              {!! Form::close() !!}
+            </form>
+             
             </div>
             <!-- /.modal-content -->
           </div>

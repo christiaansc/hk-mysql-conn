@@ -78,6 +78,9 @@
     </div>
 
     @yield('script')
+
+@yield('js_user_page')
+@yield('js_role_page')
     
 </body>
 </html>
