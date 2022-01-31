@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use Illuminate\Support\Facades\Gate;
+
 
 class InsumoController extends Controller
 {
@@ -51,7 +53,12 @@ class InsumoController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::allows('adm')) {
+            dd('el usuario si es admin');
+        }else{
+            dd('el usuario no es admin');
 
+        }
         $insrumo = Insumo::create($request->all());
         return redirect()->route('insumos.index')->with('toast_success', 'Creado Exitosamente!');  
     }

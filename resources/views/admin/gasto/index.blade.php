@@ -27,7 +27,7 @@
 				<a data-toggle="modal" data-target="#modal-add" >
 				<span class="btn btn-success">+ Crear nuevo gasto</span>
 				</a>
-				@can('gastos.index')
+				@can('adm')
 					
 			
 				<div class="col-12 col-md-4 text-center">

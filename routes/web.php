@@ -40,8 +40,8 @@ Route::resource('gastos', 'GastoController')->names('gastos');
 Route::resource('categorias', 'CategoriaController')->names('categorias');
 
 
-Route::resource('roles', 'RolesController')->middleware('can:admin.home')->names('admin.roles');
-Route::resource('users', 'UserController')->middleware('can:admin.home')->names('admin.users');
+Route::resource('roles', 'RolesController')->middleware('can:admin.roles')->names('admin.roles');
+Route::resource('users', 'UserController')->middleware('can:admin.users')->names('admin.users');
 
 
 
