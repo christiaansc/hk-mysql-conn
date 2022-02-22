@@ -12,7 +12,9 @@ class VentaDetalle extends Model
         'cantidad', 
         'descuento',                        
         'venta_id',             
-        'product_id',             
+        'product_id', 
+        'user_id',             
+
     ];
 
  

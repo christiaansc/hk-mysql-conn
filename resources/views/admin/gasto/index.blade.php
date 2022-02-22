@@ -30,7 +30,7 @@
 				@can('adm')
 					
 			
-				<div class="col-12 col-md-4 text-center">
+				<div class="col-12 col-md-3 text-center">
 					<span>Gastos totales: <b> </b></span>
 					<div class="form-group">
 						@foreach($gastosTotales as $gasto)
@@ -38,7 +38,7 @@
 						@endforeach
 					</div>
 				</div>
-				<div class="col-12 col-md-4 text-center">
+				<div class="col-12 col-md-3 text-center">
 					<span>Gasto mes actual: <b> </b></span>
 					<div class="form-group">
 						@foreach($totalmesactual as $gastom)
@@ -46,7 +46,14 @@
 						@endforeach
 					</div>
 				</div>
-
+				<div class="col-12 col-md-3 text-center">
+					<span>Gasto Semana actual: <b> </b></span>
+					<div class="form-group">
+						@foreach($totalSemActual as $gastoSem)
+							$<strong> {{number_format($gastoSem->totalSemactual)}}</strong>
+						@endforeach
+					</div>
+				</div>
 				@endcan
 			</div>
 			<!-- /.card-header -->

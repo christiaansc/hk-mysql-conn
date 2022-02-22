@@ -103,6 +103,7 @@ class VentaController extends Controller
         
         $subtotal = 0 ;
         $VentaDetalles = $venta->VentaDetalle;
+        
         foreach ($VentaDetalles as $ventaDetalle) {
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }

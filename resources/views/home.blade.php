@@ -223,6 +223,7 @@
                 </div>
             </div>
         </div>
+     
     @else
 
     <div class="row">
@@ -448,32 +449,57 @@ $(function () {
 
 
     $(function () {
+
+        Chart.defaults.global.defaultFontSize = 12;    
+
+
         var varVenta=document.getElementById('ventas2').getContext('2d');
             var charVenta = new Chart(varVenta, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: [<?php foreach ($ventasdia as $ventadia)
-                {   
-                    setlocale(LC_ALL, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-
-                
-                    $dia = strftime('%A',strtotime($ventadia->dia)) ;
-                    
-                    echo '"'. $dia.'",';} ?>],
+                {                     
+                    echo '"'. $ventadia->dia.'",';} ?>],
                     datasets: [{
                         label: 'Total ventas Diarias',
                         data: [<?php foreach ($ventasdia as $reg)
-                        {echo ''. $reg->totalpordia.',';} ?>],
-                        backgroundColor: 'rgba(255, 255, 255, 0)',
+                        {echo ''. $reg->totalpordia.','; } ?>],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+                        ],
                         borderColor: 'rgba(0, 0, 0, 1)',
-                        borderWidth: 1
+                        borderWidth: 2
                     }]
                 },
                 options: {
+                    tooltips: {
+           callbacks: {
+               label: function(tooltipItem, data) {
+                  var value = data.datasets[0].data[tooltipItem.index];
+                  value = value.toString();
+                  value = value.split(/(?=(?:...)*$)/);
+                  value = value.join('.');
+                  return value;
+               }
+           } // end callbacks:
+         }, //end tooltips
                     scales: {
                         yAxes: [{
+                            
                             ticks: {
-                                beginAtZero:true
+                                beginAtZero:true,
+                                userCallback: function(value, index, values) {
+                                // Convert the number to a string and splite the string every 3 charaters from the end
+                                value = value.toString();
+                                value = value.split(/(?=(?:...)*$)/);
+                                value = value.join('.');
+                                return value;
+                  }
                             }
                         }]
                     }
@@ -481,30 +507,47 @@ $(function () {
             });
 
             var varVenta=document.getElementById('ventas').getContext('2d');
+            
             var charVenta = new Chart(varVenta, {
-                type: 'pie',
+                type: 'bar',
                 data: {
                     labels: [<?php foreach ($ventasmes as $reg)
-                {
-                    setlocale(LC_ALL, 'es_ES', 'Spanish_Spain', 'Spanish'); 
-                    
-                    $mes_traducido=strftime('%B',strtotime($reg->mes));
+                { 
                     
                     echo '"'. $reg->mes.'",';} ?>],
                     datasets: [{
                         label: 'Ventas',
                         data: [<?php foreach ($ventasmes as $reg)
                         {echo ''. $reg->totalmes.',';} ?>],
-                        backgroundColor:  ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                        backgroundColor:  ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de',
+                                             '#70EA25', '#BEEA25', '#25EAD8', '#C925EA', '#E7EA25'],
                         borderColor: 'rgba(0, 0, 0, 1)',
-                        borderWidth: 1
+                        borderWidth: 2
                     }]
                 },
                 options: {
+                    tooltips: {
+                    callbacks: {
+                        label: function(tooltipItem, data) {
+                            var value = data.datasets[0].data[tooltipItem.index];
+                            value = value.toString();
+                            value = value.split(/(?=(?:...)*$)/);
+                            value = value.join('.');
+                            return value;
+                        }
+                    } // end callbacks:
+                    }, //end tooltips
                     scales: {
                         yAxes: [{
                             ticks: {
-                                beginAtZero:true
+                                beginAtZero:true,
+                                userCallback: function(value, index, values) {
+                                    // Convert the number to a string and splite the string every 3 charaters from the end
+                                    value = value.toString();
+                                    value = value.split(/(?=(?:...)*$)/);
+                                    value = value.join('.');
+                                    return value;
+                                }
                             }
                         }]
                     }

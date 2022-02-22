@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-control-label"><strong>Vendedor</strong></label>
-                            <p>{{Auth::user()->name}}</p>
+                            <p>{{$venta->user->name}}</p>
                         </div>
 
                         <div class="col-md-4">
