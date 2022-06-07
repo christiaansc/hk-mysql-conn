@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
 
-              $ventasmes=DB::select('SELECT monthname(v.fecha_venta) as mes, sum(v.total) as totalmes from ventas v where v.stado="VALIDO" group by monthname(v.fecha_venta) desc');
+              $ventasmes=DB::select('SELECT monthname(v.fecha_venta) as mes, sum(v.total) as totalmes from ventas v where v.stado="VALIDO" AND YEAR(fecha_venta) = YEAR(now())  group by monthname(v.fecha_venta) desc');
       
               $ventasdia=DB::select('SELECT DATE(fecha_venta) as dia ,SUM(total) as totalpordia from ventas WHERE stado="VALIDO"  group by DATE(fecha_venta)  desc limit 7');
               
@@ -54,11 +54,11 @@ class HomeController extends Controller
 
              $totaldia2 = DB::select('SELECT sum(total) as totaldia FROM ventas where date(fecha_venta) = curdate() and stado = "VALIDO"');
                          
-             $totalm= DB::select('SELECT sum(v.total) as totalmes from ventas v where v.stado="VALIDO"');
+             $totalm= DB::select('SELECT sum(v.total) as totalmes from ventas v where v.stado="VALIDO" AND YEAR(v.fecha_venta) = YEAR(now())  ');
 
              $totalDiaAnt= DB::select('SELECT sum(total) as totalAnt from ventas  where DATE(fecha_venta) =  DATE_SUB(curdate(),INTERVAL 1 DAY) AND stado="VALIDO"');
 
-             $totalmesactual = DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now())');
+             $totalmesactual = DB::select('SELECT sum(v.total) as totalmesactual from ventas v where v.stado="VALIDO" and month(v.fecha_venta) = month(now()) AND YEAR(fecha_venta) = YEAR(now()) ');
 
             $t_efectivo      = DB::select('SELECT sum(total) as totalefectivo FROM ventas WHERE metodo_pago = "EFECTIVO" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
             $t_transferencia = DB::select('SELECT sum(total) as totaltransferencia FROM ventas WHERE metodo_pago = "TRANSFERENCIA" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');

@@ -46,14 +46,14 @@
 						@endforeach
 					</div>
 				</div>
-				<div class="col-12 col-md-3 text-center">
+				<!-- <div class="col-12 col-md-3 text-center">
 					<span>Gasto Semana actual: <b> </b></span>
 					<div class="form-group">
 						@foreach($totalSemActual as $gastoSem)
 							$<strong> {{number_format($gastoSem->totalSemactual)}}</strong>
 						@endforeach
 					</div>
-				</div>
+				</div> -->
 				@endcan
 			</div>
 			<!-- /.card-header -->

@@ -24,7 +24,7 @@ class GastoController extends Controller
     public function index()
     {       
             $gastosTotales = DB::select('SELECT  sum(montoTotal) as totalGastos FROM gastos');
-            $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where  month(fechaGasto) = month(now())');
+            $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where  month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now()) ');
             $totalSemActual = DB::select('SELECT sum(montoTotal) as totalSemactual from gastos  where date(fechaGasto) >= DATE(NOW()) - INTERVAL 7 DAY');
 
 
