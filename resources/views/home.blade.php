@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid pt-4">
+<div class="content pt-4">
     
     @role('Administrador')
         <!-- fitro periodo -->
@@ -26,8 +26,11 @@
             </div>
         </div>
 
-        <!-- Montos ventas diarias  -->
+
+
+        <!-- Montos ventas   -->
         <div class="row">
+            
             <div class="col-lg-3">
                     <!-- small card -->
                 @foreach($totalm as $mes)
@@ -37,11 +40,9 @@
                             <p>Ventas totales</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -54,44 +55,38 @@
                             <p>Venta total mes actual</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
                 <div class="col-lg-3">
                     <!-- small card -->
-                @foreach($totalDiaAnt as $diaAnt)
+                    @foreach($totalDiaAnt as $diaAnt)
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h2>${{number_format($diaAnt->totalAnt)}}</h2>
                             <p>Venta total Dia Anterior</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
-                @endforeach
+                    @endforeach
                 <div class="col-lg-3">
-                @foreach($totaldia2 as $t_dia2)
+                    @foreach($totaldia2 as $t_dia2)
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h2>${{number_format($t_dia2->totaldia)}}</h2>
                             <p>Venta total dia</p>
                         </div>
                         <div class="icon">
-                            <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                            Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                    
                     </div>
                 </div>
                 @endforeach
@@ -99,7 +94,7 @@
         </div>
     
     
-    <!-- Total ventas credito -->
+    <!-- Total ventas diarias -->
         <div class="row">
             <div class="col-lg-3">
                     <!-- small card -->
@@ -112,9 +107,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -129,9 +122,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -146,9 +137,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -162,19 +151,75 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                            Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                     
                     </div>
                 </div>
                 @endforeach
+            </div>
+            
+            <div class="row">
+                
+            @foreach($t_repartos_d as $t_rep_d )
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box bg-success">
+                        <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+                        <div class="info-box-content">
+                                
+                            <span class="info-box-text">Total repartos diario</span>
+                            <span class="info-box-number"> ${{number_format($t_rep_d->total_repartos)}}</span>      
+                                 
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-12">
+                    <div class="info-box bg-success">
+                        <span class="info-box-icon"><i class="fa fa-bicycle"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Cantidad repartos diario</span>
+                            <span class="info-box-number">{{$t_rep_d->cantidad}}</span>             
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            @endforeach 
+            @foreach ($t_repartos_m as $t_rep_m )
+                
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-success">
+                    <span class="info-box-icon"><i class="fa fa-bicycle"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Cantidad reparto mensual</span>
+                        <span class="info-box-number">{{ $t_rep_m->cantidad }}</span>             
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box bg-success">
+                    <span class="info-box-icon"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text">Total reparto mensual</span>
+                        <span class="info-box-number"> ${{number_format($t_rep_m->total_repartos) }} </span>             
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+        </div>
+        @endforeach
+        
+        <div class="row">    
                 <div class="col-lg-6">
                 @foreach($totaldia2 as $t_dia2)
 
                     <div class="small-box bg-secondary text-center">
                         <div class="inner">
                             <p><h5>META DIARIA</h5></p>
-                            <h2>${{number_format($t_dia2->totaldia)}} / $250,000</h2>
+                            <h2>${{number_format($t_dia2->totaldia)}} / $180.000</h2>
                         </div>
                         <div class="icon">
                             <i class="fas fa-chart-pie"></i>
@@ -187,7 +232,7 @@
                     <div class="small-box bg-secondary text-center">
                         <div class="inner">
                             <p><h5>META MENSUAL</h5></p>
-                            <h2>${{number_format($tmactual->totalmesactual)}} / $6,000,000</h2>
+                            <h2>${{number_format($tmactual->totalmesactual)}} / $5,000,000</h2>
                         </div>
                         <div class="icon">
                             <i class="fas fa-chart-pie"></i>
@@ -238,9 +283,7 @@
                             <div class="icon">
                                 <i class="fas fa-dollar-sign"></i>
                             </div>
-                            <a href="{{route('ventas.index')}}" class="small-box-footer">
-                                Mas info <i class="fas fa-arrow-circle-right"></i>
-                            </a>
+                          
                         </div>
                     </div>
                     @endforeach
@@ -260,9 +303,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -277,9 +318,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -294,9 +333,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                        Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                 
                     </div>
                 </div>
                 @endforeach
@@ -310,9 +347,7 @@
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
                         </div>
-                        <a href="{{route('ventas.index')}}" class="small-box-footer">
-                            Mas info <i class="fas fa-arrow-circle-right"></i>
-                        </a>
+                     
                     </div>
                 </div>
                 @endforeach               

@@ -66,6 +66,23 @@ class HomeController extends Controller
             $t_credito       = DB::select('SELECT sum(total) as totalcredito FROM ventas WHERE metodo_pago = "CREDITO" AND stado = "VALIDO" AND DATE(fecha_venta)  = CURDATE()');
 
 
+            $t_repartos_d    = DB::select('SELECT sum(p.precio) as total_repartos, count(vd.id) cantidad FROM ventas v
+            inner join venta_detalles vd on v.id = vd.venta_id
+            inner join products p  on p.id =  vd.product_id
+            where p.categoria_id = 25  
+            AND  v.stado = "VALIDO"
+            AND   date(v.fecha_venta) = date(now())');
+
+            $t_repartos_m    = DB::select('SELECT sum(p.precio) as total_repartos , count(vd.id) cantidad FROM ventas v
+            inner join venta_detalles vd on v.id = vd.venta_id
+            inner join products p  on p.id =  vd.product_id
+            where p.categoria_id = 25  
+            AND  v.stado = "VALIDO" 
+            AND   year(v.fecha_venta) =  YEAR (NOW())
+            AND   month(v.fecha_venta) =  MONTH (NOW())');
+            
+            
+            // dd($t_repartos_d);
 
             // dd($t_transferencia);
               return view('home', compact(  'ventasmes',
@@ -80,6 +97,8 @@ class HomeController extends Controller
                 't_efectivo',
                 't_transferencia',
                 't_debito',
+                't_repartos_d',
+                't_repartos_m',
                 't_credito'
             ));
     }

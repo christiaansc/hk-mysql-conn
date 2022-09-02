@@ -30,7 +30,7 @@ class GastoController extends Controller
 
             
             // $gastos = Gasto::get();
-            $gastos = Gasto::whereMonth('created_at', '=', Carbon::now()->month)->orderBy('id', 'desc')->get();   
+            $gastos = Gasto::whereDate('created_at', '=', Carbon::now())->orderBy('id', 'desc')->get();   
 
             return view('admin.gasto.index' , compact('gastos', 'gastosTotales','totalmesactual', 'totalSemActual'));
 
