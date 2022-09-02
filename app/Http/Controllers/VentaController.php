@@ -34,8 +34,9 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::whereDate('created_at', '=', Carbon::now())->orderBy('id', 'desc')->get();  
-             
+        $ventas = Venta::whereDate('created_at', '=', Carbon::now())
+                        ->orderBy('id', 'desc')->get();   
+        
         
          return view('admin.ventas.index', compact('ventas'));
     }
