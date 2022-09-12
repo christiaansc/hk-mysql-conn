@@ -27,11 +27,10 @@ class GastoController extends Controller
             $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where  month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now()) ');
             $totalSemActual = DB::select('SELECT sum(montoTotal) as totalSemactual from gastos  where date(fechaGasto) >= DATE(NOW()) - INTERVAL 7 DAY');
 
-
-            
-            // $gastos = Gasto::get();
-            $gastos = Gasto::whereDate('created_at', '=', Carbon::now())->orderBy('id', 'desc')->get();   
-
+           
+            $gastos = Gasto::whereMonth('fechaGasto', '=', Carbon::now()->month)
+                        ->WhereYear('fechaGasto' , '=' , Carbon::now()->year )
+                        ->orderBy('id', 'desc')->get();
             return view('admin.gasto.index' , compact('gastos', 'gastosTotales','totalmesactual', 'totalSemActual'));
 
     }
