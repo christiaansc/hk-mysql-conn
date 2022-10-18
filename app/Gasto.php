@@ -12,6 +12,7 @@ class Gasto extends Model
         'monto',
         'fechaGasto',
         'cantidad',
+        'tipo_gasto',
         'montoTotal',
         'estado',
         ];

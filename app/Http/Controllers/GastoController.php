@@ -23,15 +23,26 @@ class GastoController extends Controller
      */
     public function index()
     {       
-            $gastosTotales = DB::select('SELECT  sum(montoTotal) as totalGastos FROM gastos');
-            $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where  month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now()) ');
-            $totalSemActual = DB::select('SELECT sum(montoTotal) as totalSemactual from gastos  where date(fechaGasto) >= DATE(NOW()) - INTERVAL 7 DAY');
+            $gastosTotales = DB::select('SELECT  sum(montoTotal) as totalGastos FROM gastos where month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now())');
+            $totalmesactual = DB::select('SELECT sum(montoTotal) as totalmesactual from gastos  where tipo_gasto = 0 and  month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now()) ');
+            $totalmesCasa = DB::select('SELECT sum(montoTotal) as totalmesCasa from gastos  where tipo_gasto = 1 and   month(fechaGasto) = month(now()) AND YEAR(fechaGasto) = YEAR(now()) ');
+            
+
+        //    dd($totalmesCasa);
 
            
             $gastos = Gasto::whereMonth('fechaGasto', '=', Carbon::now()->month)
                         ->WhereYear('fechaGasto' , '=' , Carbon::now()->year )
+                        ->where('tipo_gasto' , '=' , 0)
                         ->orderBy('id', 'desc')->get();
-            return view('admin.gasto.index' , compact('gastos', 'gastosTotales','totalmesactual', 'totalSemActual'));
+
+            $gastosCasa = Gasto::whereMonth('fechaGasto', '=', Carbon::now()->month)
+                        ->WhereYear('fechaGasto' , '=' , Carbon::now()->year )
+                        ->where('tipo_gasto' , '=' , 1)
+                        ->orderBy('id', 'desc')->get();                       
+                        
+
+            return view('admin.gasto.index' , compact('gastos', 'gastosTotales','totalmesactual', 'totalmesCasa', 'gastosCasa'));
 
     }
 
@@ -53,6 +64,8 @@ class GastoController extends Controller
      */
     public function store(Request $request)
     {
+        
+
         $montoTotal = $request->monto * $request->cantidad;
         $fechaGasto = Carbon::now('America/Santiago');
         $gasto = Gasto::create($request->all() + [
