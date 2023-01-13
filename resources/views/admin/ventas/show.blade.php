@@ -52,7 +52,7 @@
                                         <th>Precio Venta (CLP)</th>
                                         <th>Descuento</th>
                                         <th>Cantidad</th>
-                                        <th>SubTotal(CLP)</th>
+                                        <th>Precio Final(CLP)</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
@@ -88,8 +88,8 @@
                                     @foreach($VentaDetalles as $ventaDetalle)
                                     <tr>
                                         <td>{{$ventaDetalle->product->nombre}}</td>
-                                        <td>s/ {{$ventaDetalle->precio}}</td>
-                                        <td>{{$ventaDetalle->decuento}} %</td>
+                                        <td>$ {{$ventaDetalle->precio}}</td>
+                                        <td>{{$ventaDetalle->descuento}} %</td>
                                         <td>{{$ventaDetalle->cantidad}}</td>
                                         <td>s/{{number_format($ventaDetalle->cantidad*$ventaDetalle->precio - $ventaDetalle->cantidad*$ventaDetalle->precio*$ventaDetalle->descuento/100)}}
                                         </td>

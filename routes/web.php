@@ -38,6 +38,8 @@ Route::resource('clientes', 'ClienteController')->names('clientes');
 Route::resource('insumos', 'InsumoController')->names('insumos');
 Route::resource('gastos', 'GastoController')->names('gastos');
 Route::resource('categorias', 'CategoriaController')->names('categorias');
+Route::resource('plantas', 'plantaController')->names('plantas');
+
 
 
 Route::resource('roles', 'RolesController')->middleware('can:admin.roles')->names('admin.roles');

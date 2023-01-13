@@ -89,6 +89,7 @@ var pedidosya = $('#pedidosya');
 
                 // console.log(data);
                 $("#price").val(data.precio);
+                $("#precio").val(data.precio);
                 $("#code").val(data.codigo);
         }
     });
@@ -130,15 +131,17 @@ function agregar() {
     product_id = datosProducto[0];
     producto = $("#product_id option:selected").text();
     quantity = $("#quantity").val();
-    discount = "0";
+    discount = $('#discount').val();
+
+    // alert(discount);
     price = $("#price").val();
     stock = $("#stock").val();
     impuesto = $("#tax").val();
     if (product_id != "" && quantity != "" && quantity > 0 && discount != "" && price != "") {
         
-            subtotal[cont] = (quantity * price) - (quantity * price * discount / 100);
+            subtotal[cont] = (quantity * price);
             total = total + subtotal[cont];
-            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td> <td> <input type="hidden" name="price[]" value="' + parseInt(price) + '"> <input class="form-control" type="number" value="' + parseInt(price) + '" disabled> </td> <td> <input type="hidden" name="discount[]" value="' + parseInt(discount) + '"> <input class="form-control" type="number" value="' + parseInt(discount) + '" disabled> </td> <td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td> <td align="right">s/' + parseInt(subtotal[cont]) + '</td></tr>';
+            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa fa-times fa-2x"></i></button></td> <td><input type="hidden" name="product_id[]" value="' + product_id + '">' + producto + '</td> <td> <input type="hidden" name="price[]" value="' + parseInt(price) + '"> <input class="form-control" type="number" value="' + parseInt(price) + '" disabled> </td>  <td> <input type="hidden" name="quantity[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td> <td align="right">s/' + parseInt(subtotal[cont]) + '</td></tr>';
             cont++;
             limpiar();
             totales();
@@ -164,16 +167,18 @@ function agregar() {
 }
 function limpiar() {
     $("#quantity").val("");
-    $("#discount").val("0");
 }
 function totales() {
-    $("#total").html("CLP " + total);
+    const precioProd = $('#price').val();
+    totalDesc = total * discount / 100;
+    subTotal = total - totalDesc;
+    total_pagar = subTotal;
+    
+    $("#descTotal").html( `${discount}%    =  ${totalDesc}`);
+    $("#total_pagar").val(`${total_pagar}`);
+    $("#total").html(`${total}`);
 
-    ;
-    total_pagar = total ;
-   
-    $("#total_pagar_html").html("CLP " + total_pagar);
-    $("#total_pagar").val(total_pagar);
+    $("#total_pagar_html").html(` CLP   ${total_pagar}`);
 }
 function evaluar() {
     if (total > 0) {
@@ -183,15 +188,15 @@ function evaluar() {
     }
 }
 function eliminar(index) {
-    total = total - subtotal[index];
-    // total_impuesto = total * impuesto / 100;
-    total_impuesto = 0;
+    total = total - subtotal[index]  ;
+    let totalDesc = total *  discount / 100;
 
-    total_pagar_html = total + total_impuesto;
+    total_pagar_html = total - totalDesc;
     $("#total").html("CLP" + total);
-    // $("#total_impuesto").html("PEN" + total_impuesto);
     $("#total_pagar_html").html("CLP" + total_pagar_html);
-    $("#total_pagar").val(total_pagar_html.toFixed(2));
+    $("#total_pagar").val(total_pagar_html);
+    $("#descTotal").html( `${discount}%    =  ${totalDesc}`);
+
     $("#fila" + index).remove();
     evaluar();
 }

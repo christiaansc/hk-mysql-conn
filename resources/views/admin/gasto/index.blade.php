@@ -100,7 +100,7 @@
                                                                        
                             <td >   
 								{!! Form::open(['route'=>['gastos.destroy',$gasto], 'method'=>'DELETE']) !!}
-									<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }} title="Editar">								
+									<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }}" title="Editar">								
 										<i class="fas fa-edit"></i>
 									</a>
 									
@@ -170,7 +170,7 @@
                                                                        
                             <td >   
 								{!! Form::open(['route'=>['gastos.destroy',$gasto], 'method'=>'DELETE']) !!}
-									<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }} title="Editar">								
+									<a class="btn  btn-info btn-sm" data-toggle="modal" data-target="#modal-default" data-id="{{ $gasto->id }}" title="Editar">								
 										<i class="fas fa-edit"></i>
 									</a>
 									

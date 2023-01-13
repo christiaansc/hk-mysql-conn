@@ -54,6 +54,8 @@
         <div class="form-group">
             <label for="price">Precio de venta</label>
             <input type="number" class="form-control" name="price" id="price" aria-describedby="helpId" disabled>
+            <input type="hidden" class="form-control"  id="precio"  >
+
         </div>
     </div>
  
@@ -64,6 +66,15 @@
         </div>
     </div>
     
+    <div class="form-group col-md-3">
+        <label for="discount">Porcentaje de descuento</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon2">%</span>
+            </div>
+            <input type="number" class="form-control" name="discount" id="discount" aria-describedby="basic-addon2" value="0">
+        </div>
+    </div>
 </div>
 
     <!-- <div class="form-group col-md-3">
@@ -75,34 +86,24 @@
             <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3" value="0">
         </div>
     </div> -->
-    <!-- <div class="form-group col-md-3">
-        <label for="discount">Porcentaje de descuento</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon2">%</span>
-            </div>
-            <input type="number" class="form-control" name="discount" id="discount" aria-describedby="basic-addon2" value="0">
-        </div>
-    </div> -->
     
         <button type="button" id="agregar" class="btn btn-success float-right mb-4">Agregar producto</button>
    
     <div class="form-group">
         
         <div class="table-responsive col-md-12">
-            <table id="detalles" class="table">
+            <table id="detalles" class="table table-bordered table-striped  dtr-inline">
                 <thead>
                     <tr>
                         <th>Eliminar</th>
                         <th>Producto</th>
                         <th>Precio Venta (CLP)</th>
-                        <th>Descuento</th>
                         <th>Cantidad</th>
                         <th>SubTotal (CLP)</th>
                     </tr>
                 </thead>
                 <tfoot>
-                    <tr>
+                <tr>
                         <th colspan="5">
                             <p align="right">SUB TOTAL:</p>
                         </th>
@@ -110,6 +111,15 @@
                             <p align="right"><span id="total">CLP 00</span> </p>
                         </th>
                     </tr>
+                    <tr>
+                        <th colspan="5">
+                            <p align="right">DESCUENTO TOTAL:</p>
+                        </th>
+                        <th>
+                            <p align="right"><span id="descTotal" value="0">CLP 00</span> </p>
+                        </th>
+                    </tr>
+
                     <tr>
                         <th colspan="5">
                             <p align="right">TOTAL PAGAR:</p>
