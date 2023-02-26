@@ -32,15 +32,26 @@ class HomeController extends Controller
               $ventasmes=DB::select('SELECT monthname(v.fecha_venta) as mes, sum(v.total) as totalmes from ventas v where v.stado="VALIDO" AND YEAR(fecha_venta) = YEAR(now())  group by monthname(v.fecha_venta) desc');
       
               $ventasdia=DB::select('SELECT DATE(fecha_venta) as dia ,SUM(total) as totalpordia from ventas WHERE stado="VALIDO"  group by DATE(fecha_venta)  desc limit 7');
+              $dayOfTheWeek = Carbon::now()->daysInMonth;
+              $prom = Venta::
+                selectRaw('sum(total) as total')
+                    ->where('stado', '=' , 'VALIDO')
+                    ->WhereYear('fecha_venta' , '=' , Carbon::now()->year )
+                    ->whereMonth('fecha_venta', '=', Carbon::now()->month)
+                    ->orderBy('id', 'desc')
+                    ->get();
+
+                  
               
               $totales=DB::select('SELECT sum(v.total) as totalventa from ventas v where DATE(v.fecha_venta)=curdate() and v.stado="VALIDO"');
               
-              $productosvendidos=DB::select('SELECT p.codigo as code, 
-              sum(dv.cantidad) as quantity, p.nombre as name , p.id as id , p.stock as stock from products p 
-              inner join venta_detalles dv on p.id=dv.product_id 
-              inner join ventas v on dv.venta_id=v.id where v.stado="VALIDO" 
-              and month(v.fecha_venta)=month(curdate()) 
-              group by p.codigo ,p.nombre, p.id , p.stock order by sum(dv.cantidad) desc limit 10');
+            //   $productosvendidos=DB::select('SELECT p.codigo as code, 
+            //   sum(dv.cantidad) as quantity, p.nombre as name , p.id as id , p.stock as stock from products p 
+            //   inner join venta_detalles dv on p.id=dv.product_id 
+            //   inner join ventas v on dv.venta_id=v.id where v.stado="VALIDO" 
+            //   and month(v.fecha_venta)=month(curdate()) 
+            //   and year(v.fecha_venta)=year(curdate()) 
+            //   group by p.codigo ,p.nombre, p.id , p.stock order by sum(dv.cantidad) desc limit 10');
 
               $productos_vendidos_dia=DB::select('SELECT p.codigo as code, 
               sum(dv.cantidad) as quantity, p.nombre as name , p.id as id , p.stock as stock from products p 
@@ -88,7 +99,6 @@ class HomeController extends Controller
               return view('home', compact(  'ventasmes',
                 'ventasdia',
                 'totales',
-                'productosvendidos',
                 'productos_vendidos_dia',
                 'totalm',
                 'totalmesactual',
@@ -99,7 +109,10 @@ class HomeController extends Controller
                 't_debito',
                 't_repartos_d',
                 't_repartos_m',
-                't_credito'
+                't_credito',
+                'prom',
+                'dayOfTheWeek'
+
             ));
     }
 

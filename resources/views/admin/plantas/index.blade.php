@@ -81,11 +81,12 @@
 							</td>
 					                                                                                                            
                             <td >   
-								  
+							{!! Form::open(['route'=>['plantas.destroy',$compra], 'method'=>'DELETE']) !!}
 								
 									<button class="btn  btn-danger btn-sm" id="eliminar" type="submit" title="Eliminar">
 										<i class="fas fa-trash-alt"></i>
 									</button>
+									{!! Form::close() !!}
                             </td>
                     	</tr>
 						@endforeach
@@ -204,7 +205,7 @@
       "ordering": true,
       "info": true,
       "autsoWidth": true,
-      "order": [[ 0, 'desc' ]],
+
     });
   });
   $(function () {
@@ -216,7 +217,7 @@
       "ordering": true,
       "info": true,
       "autsoWidth": true,
-      "order": [[ 0, 'desc' ]],
+      
     });
   });
 </script>

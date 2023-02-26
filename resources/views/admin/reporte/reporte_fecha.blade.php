@@ -73,8 +73,8 @@
                     </div>
                     {!! Form::close() !!}
                     
-                    <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                    <div class="card-body table-responsive">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -133,6 +133,20 @@
           mes='0'+mes //agrega cero si el menor de 10
         document.getElementById('fecha_fin').value=ano+"-"+mes+"-"+dia;
       }
+    
 </script>
+
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "responsive": true,
+      "searching": true,
+	  "ordering": false,
+    });
+  });
+</script>
+
 
 @endsection

@@ -35,22 +35,22 @@
                         <div class="col-12 col-md-4 text-center">
                             <span>Cantidad de registros: <b></b></span>
                             <div class="form-group">
-                                <strong>{{$sales->count()}}</strong>
+                                <strong>{{$ventas->count()}}</strong>
                             </div>
                         </div>
-                    @foreach($totaldia2 as $t_dia2)
+                    
                         <div class="col-12 col-md-4 text-center">
                             <span>Total de ingresos: <b> </b></span>
                             <div class="form-group">
-                                $<strong> {{number_format($t_dia2->totaldia)}}</strong>
+                                $<strong> {{number_format($total)}}</strong>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                 
 
 
-                    <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                    <div class="card-body table-responsive">
+                        <table  id="example1"class="table table-bordered table-striped dataTable dtr-inline" id="order-listing" class="table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
@@ -61,7 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sales as $sale)
+                                @foreach ($ventas as $sale)
                                 <tr>
                                     <th scope="row">
                                         <a href="{{route('ventas.show', $sale)}}">{{$sale->id}}</a>
@@ -73,7 +73,7 @@
                                     <td>{{$sale->stado}}</td>
                                     <td style="width: 50px;">
                                        
-                                        {{--  <a class="jsgrid-button jsgrid-edit-button" href="{{route('sales.edit', $sale)}}" title="Editar">
+                                        {{--  <a class="jsgrid-button jsgrid-edit-button" href="{{route('ventas.edit', $sale)}}" title="Editar">
                                             <i class="far fa-edit"></i>
                                         </a>  --}}
 {{--                                          
@@ -94,10 +94,23 @@
                     </div>
                 </div>
                 {{--  <div class="card-footer text-muted">
-                    {{$sales->render()}}
+                    {{$ventas->render()}}
                 </div>  --}}
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+  $(function () {
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "responsive": true,
+      "searching": true,
+	  "ordering": false,
+    });
+  });
+</script>
 @endsection

@@ -6,38 +6,16 @@
     
     @role('Administrador')
         <!-- fitro periodo -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">              
-                            <div class="form-group col-lg-2">
-                                <label for="periodo">FILTRO PERIODO</label>
-                                <select class="form-control" name="periodo" id="periodo">  
-                                    <option value="0" >PERIODO</option>
-                                    <option value="1">HOY</option>
-                                    <option value="3">ESTE MES</option>
-
-
-                                </select>
-                            </div>                 
-                            <button type="button" id="filtro" class="btn btn-success float-right">FILTRAR</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
         <!-- Montos ventas   -->
         <div class="row">
             
             <div class="col-lg-3">
                     <!-- small card -->
-                @foreach($totalm as $mes)
+                @foreach($prom as $p)
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h2>${{number_format($mes->totalmes)}}</h2>
-                            <p>Ventas totales</p>
+                        <h2>${{number_format($p->total / $dayOfTheWeek)}}</h2>
+                            <p>Promedio Venta mensual</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-cash-register"></i>
@@ -398,49 +376,7 @@
     </div>
 
     <!-- Productos mas vendidos del mes  -->
-    <div class="row">
-        <div class="col-12 grid-margin">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <i class="fas fa-box"></i>
-                        Productos más vendidos ( Mes actual )
-                    </h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th>Nombre</th>
-                                    <th>Código</th>
-                                    
-                                    <th>Cantidad vendida</th>
-                                    <th>Ver detalles</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($productosvendidos as $productosvendido)
-                                <tr>
-                                    <td>{{$productosvendido->id}}</td>
-                                    <td>{{$productosvendido->name}}</td>
-                                    <td>{{$productosvendido->code}}</td>
-                                    <td><strong>{{$productosvendido->quantity}}</strong> Unidades</td>
-                                    <td>
-                                        <a class="btn btn-primary"
-                                            href="{{route('products.show', $productosvendido->id)}}">
-                                            <i class="far fa-eye"></i>
-                                            Ver detalles
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     
 </div>
 @endsection
