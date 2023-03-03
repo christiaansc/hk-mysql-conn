@@ -7,6 +7,8 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="shortcut icon" type="image/png" href="{{ asset('../../img/favicon.png') }}">
+  <link rel="shortcut icon" sizes="192x192" href="{{ asset('../../img/favicon.png') }}">
   <!-- Font Awesome -->
   <!-- <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css"> -->
   <!-- overlayScrollbars -->

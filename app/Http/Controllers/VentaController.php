@@ -34,12 +34,12 @@ class VentaController extends Controller
      */
     public function index()
     {
-        // $ventas = Venta::whereMonth('fecha_venta', '=', Carbon::now()->month)
-        //                 ->WhereYear('fecha_venta' , '=' , Carbon::now()->year )
-        //                 ->orderBy('id', 'desc')->get();   
+        $ventas = Venta::whereMonth('fecha_venta', '=', Carbon::now()->month)
+                        ->WhereYear('fecha_venta' , '=' , Carbon::now()->year )
+                        ->orderBy('id', 'desc')->get();   
 
-        $ventas =   Venta::whereDate('created_at', Carbon::today())
-                            ->orderBy('id', 'desc')->get();
+        // $ventas =   Venta::whereDate('fecha_venta', Carbon::today())
+        //                     ->orderBy('id', 'desc')->get();
         
         
          return view('admin.ventas.index', compact('ventas'));
@@ -74,7 +74,7 @@ class VentaController extends Controller
 
   
 
-        // dd($request);
+    
         if($metodo_pago === "DEBITO"){
                 $desc_debito = ((($total * 1.15)/100)+ 30)*1.19;
                 $total = $total - $desc_debito;
