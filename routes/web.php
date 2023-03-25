@@ -23,14 +23,10 @@ Route::get('/', 'HomeController@index')->middleware('can:admin.home')->name('adm
 
 // Rutas ventas
 Route::get('ventas/pdf/{venta}', 'VentaController@pdf')->name('ventas.pdf');
-
 Route::get('ventas/print/{venta}', 'VentaController@print')->name('ventas.print');  
-
-
 Route::get('ventas/reports_day', 'ReportController@reports_day')->name('reports.day');
 Route::get('ventas/reports_date', 'ReportController@reports_date')->name('reports.date');
 Route::post('ventas/report_results', 'ReportController@report_results')->name('report.results');
-
 
 Route::resource('ventas', 'VentaController')->names('ventas');
 Route::resource('products', 'ProductController')->names('products');
@@ -64,10 +60,3 @@ Route::get('periodo', 'HomeController@periodo')->name('periodo');
 Route::get('change_status/ventas/{venta}', 'VentaController@change_status')->name('change.status.ventas');
 Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
 Route::get('change_status/Insumos/{insumo}', 'InsumoController@change_status')->name('change.status.insumos');
-
-
-
-// Route::resource('permisos', 'PermissionController')
-//         ->name('permisos')
-//         ->parameters(['permisos' =>'permission'])
-//         ->only(['index','show']);

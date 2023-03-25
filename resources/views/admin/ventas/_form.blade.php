@@ -63,6 +63,8 @@
                         <th>Producto</th>
                         <th>Precio Venta (CLP)</th>
                         <th>Cantidad</th>
+                        <th>descuento</th>
+
                         <th>SubTotal (CLP)</th>
                     </tr>
                 </thead>

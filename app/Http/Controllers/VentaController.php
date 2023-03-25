@@ -65,14 +65,17 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
+
         $cliente_id         = "1";
         $user_id            = Auth::user()->id;
         $total              = $request->total;
         $metodo_pago        = $request->metodo_pago;
         $fecha_venta        = Carbon::now('America/Santiago');
         $descuento          = $request->discount;
-
-  
+        
+        
+        
+        try {
 
     
         if($metodo_pago === "DEBITO"){
@@ -94,12 +97,19 @@ class VentaController extends Controller
         ]);
 
         foreach ($request->product_id as $key => $product) {
-            $results[] = array("product_id"=>$request->product_id[$key],"metodo_pago"=>$request->metodo_pago, "cantidad"=>$request->quantity[$key], "precio"=>$request->price[$key], "descuento"=>$descuento, 'fecha_venta'=>Carbon::now('America/Santiago'));
+            $results[] = array("product_id"=>$request->product_id[$key],"metodo_pago"=>$request->metodo_pago, "cantidad"=>$request->quantity[$key], "precio"=>$request->price[$key], "descuento"=>$request->discount[$key], 'fecha_venta'=>Carbon::now('America/Santiago'));
             
         }
+
         
-        $sale->ventaDetalle()->createMany($results);
-        return redirect()->route('ventas.create')->with('toast_success', 'Venta registrada Exitosamente!');
+            $sale->ventaDetalle()->createMany($results);
+            return redirect()->route('ventas.create')->with('toast_success', 'Venta registrada Exitosamente!');
+           
+        } catch (\Throwable $th) {
+            return redirect()->route('ventas.create')->with('toast_error', 'Venta no registrada!');
+
+        }
+        
     }
 
     /**
