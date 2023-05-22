@@ -383,41 +383,6 @@
 @section('script')
 <script>
 
-    
-
-$(function () {
-    $('#periodo').change(function(){
-            var periodo = $('#periodo').val();
-            $.ajax({
-                url: "{{route('periodo')}}",
-                method: 'GET',
-                data:{
-                    codPeriodo: periodo,
-                },
-                success: function(data){
-                 
-                    credito = data["t_credito"];
-                    debito = data["t_debito"];
-                    transf = data["t_transferencia"];
-                    efectivo = data["t_efectivo"];
-
-                    // console.log(data);
-            
-                    $("#t_efectivo").text(efectivo);
-                    $("#t_transfe").text(transf);
-                    $("#t_debito").text(debito);
-                    $("#t_credito").text(credito);
-                   
-
-
-            }
-        });
-    });
-});
-
-</script>
-<script>
-
 
     $(function () {
 

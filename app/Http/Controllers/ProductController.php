@@ -50,22 +50,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $image_name ='';
-        if($request->hasFile('picture')){
-            $file = $request->file('picture');
-            $image_name = time().'_'.$file->getClientOriginalName();
-            $file->move(public_path("/image"),$image_name);
+        try {
+            $image_name ='';
+            if($request->hasFile('picture')){
+                $file = $request->file('picture');
+                $image_name = time().'_'.$file->getClientOriginalName();
+                $file->move(public_path("/image"),$image_name);
+            }
+            $product = Product::create($request->all()+[
+                'image'=>$image_name,
+            ]);
+            return redirect('products')->with('toast_success', 'Creado Exitosamente!');
+        } catch (\Throwable $th) {
+            
+            return redirect('products')->with('toast_error', 'Error al crear Producto!');
+
         }
-        $product = Product::create($request->all()+[
-            'image'=>$image_name,
-        ]);
-        if ($product->codigo == "") {
-            $numero = $product->id;
-            $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
-            $waffle->update(['codigo'=>$numeroConCeros]);
-        }
-        // return redirect()->route('products.index')->withSuccessMessage('Agregado exitosamente');
-        return redirect('products')->with('toast_success', 'Creado Exitosamente!');
 
     }
     /**

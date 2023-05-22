@@ -33,11 +33,11 @@
                       <label for="nombre">Nombre</label>
                       <input type="text" name="nombre" id="nombre" class="form-control" aria-describedby="helpId" required>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label for="codigo">Código de barras</label>
-                      <input type="text" name="codigo" id="codigo" class="form-control" >
+                      <input type="text" name="codigo" id="codigo" class="form-control"  >
                       <!-- <small id="helpId" class="text-muted">Campo opcional</small> -->
-                    </div>
+                    </div> --}}
 
                     <div class="form-group">
                       <label for="descripcion">descripcion</label>

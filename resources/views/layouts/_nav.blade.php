@@ -123,18 +123,8 @@
           </li>
 
           
-        @can('adm')
         
-        <li class="nav-item">
-            <a href="/plantas" class="nav-link">
-              <i class="nav-icon fas fa-seedling"></i>
-              <p>
-                Plantas
-                
-              </p>
-            </a>
-          </li>
-        @endcan
+        
      
      
       </nav>
