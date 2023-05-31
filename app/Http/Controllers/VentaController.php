@@ -79,11 +79,11 @@ class VentaController extends Controller
 
     
         if($metodo_pago === "DEBITO"){
-                $desc_debito = ((($total * 1.15)/100)+ 30)*1.19;
+                $desc_debito = ((($total * 1.49)/100)+ 30)*1.19;
                 $total = $total - $desc_debito;
         }
         if($metodo_pago === "CREDITO"){
-            $desc_credito = ((($total * 1.98)/100)+ 40)*1.19;
+            $desc_credito = ((($total * 2.90)/100)+ 40)*1.19;
             $total = $total - $desc_credito;
             
         }  

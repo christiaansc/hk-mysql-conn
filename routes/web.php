@@ -38,8 +38,8 @@ Route::resource('plantas', 'PlantaController')->names('plantas');
 
 
 
-Route::resource('roles', 'RolesController')->middleware('can:admin.roles')->names('admin.roles');
-Route::resource('users', 'UserController')->middleware('can:admin.users')->names('admin.users');
+Route::resource('roles', 'RolesController')->names('admin.roles');
+Route::resource('users', 'UserController')->names('admin.users');
 
 
 
