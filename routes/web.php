@@ -19,7 +19,7 @@ Route::get('/', function() {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->middleware('can:admin.home')->name('admin.home');
+Route::get('/', 'HomeController@index')->name('admin.home');
 
 // Rutas ventas
 Route::get('ventas/pdf/{venta}', 'VentaController@pdf')->name('ventas.pdf');
